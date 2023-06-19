@@ -8,7 +8,25 @@
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
 </head>
 <body>
-    <a href="{{ route('posts.create') }}">新しいチャレンジを投稿</a>
+        @guest
+        <a href="{{ route('register') }}">ユーザー新規登録</a>
+        @endguest
+
+        @guest
+        <a href="{{ route('login') }}">ログイン</a>
+        @endguest
+
+        @auth
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">ログアウト</button>
+        </form>
+        @endauth
+
+        @auth
+        <a href="{{ route('posts.create') }}">新しいチャレンジを投稿</a>
+        @endauth
+
     <div class="container">
         {{ $slot }}
     </div>

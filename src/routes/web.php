@@ -36,3 +36,9 @@ Route::patch('/posts/{post}/update', [PostController::class, 'update'])
 Route::delete('/posts/{post}/destroy', [PostController::class, 'destroy'])
     ->name('posts.destroy')
     ->where('post', '[0-9]+');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';

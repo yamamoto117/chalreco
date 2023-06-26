@@ -24,7 +24,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3',
+            'title' => 'required|max:50',
+            'body' => 'max:500',
         ];
     }
 
@@ -32,7 +33,8 @@ class PostRequest extends FormRequest
     {
         return [
             'title.required' => 'タイトルは必須です',
-            'title.min' => ':min 文字以上入力してください',
+            'title.max' => ':max 文字以内で入力してください',
+            'body.max' => ':max 文字以内で入力してください',
         ];
     }
 }

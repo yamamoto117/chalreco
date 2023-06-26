@@ -8,11 +8,12 @@
         @forelse ($posts as $post)
             <li>
                 <a href="{{ route('posts.show', $post) }}">
+                    {{ $post->user->name }}
                     {{ $post->title }}
                 </a>
             </li>
         @empty
-            <li>No posts yet!</li>
+            <li>投稿がありません</li>
         @endforelse
     </ul>
 </x-layout>

@@ -22,7 +22,8 @@ Route::get('/posts/{post}', [PostController::class, 'show'])
     ->where('post', '[0-9]+');
 
 Route::get('/posts/create', [PostController::class, 'create'])
-    ->name('posts.create');
+    ->name('posts.create')
+    ->middleware('auth');
 Route::post('/posts/store', [PostController::class, 'store'])
     ->name('posts.store');
 

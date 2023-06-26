@@ -8,6 +8,11 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+
     public function index()
     {
         $posts = Post::latest()->get();
@@ -27,11 +32,10 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(PostRequest $request)
+    public function store(PostRequest $request, Post $post)
     {
-        $post = new Post();
-        $post->title = $request->title;
-        $post->body = $request->body;
+        $post->fill($request->all());
+        $post->user_id = $request->user()->id;
         $post->save();
 
         return redirect()

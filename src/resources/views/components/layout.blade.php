@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
 </head>
 <body>
+        <a href="{{ route('posts.index')}}">ホーム</a>
+
         @guest
         <a href="{{ route('register') }}">ユーザー新規登録</a>
         @endguest
@@ -25,6 +27,10 @@
 
         @auth
         <a href="{{ route('posts.create') }}">新しいチャレンジを投稿</a>
+        @endauth
+
+        @auth
+        <a href="{{ route('users.show', ['name' => Auth::user()->name]) }}">マイページ</a>
         @endauth
 
     <div class="container">

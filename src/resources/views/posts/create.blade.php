@@ -1,33 +1,31 @@
-<x-layout>
-    <x-slot name="title">
-        投稿 - challenge
-    </x-slot>
+@extends('components/layout')
 
-    <h1>新しいチャレンジを投稿</h1>
+@section('title', 'チャレンジを投稿')
 
+@section('content')
+<div class="text-gray-700 p-4">
     <form method="post" action="{{ route('posts.store') }}">
         @csrf
 
-        <div class="form-group">
-            <label>
-                タイトル (必須)
-                <input type="text" name="title" value="{{ old('title') }}">
-            </label>
-            @error('title')
-                <div class="error">{{ $message }}</div>
-            @enderror
+        @error('title')
+            <div class="text-red-500 pb-4">{{ $message }}</div>
+        @enderror
+
+        <div>
+            <p>タイトル <span class="text-red-500">(必須)</span></p>
+            <input class="w-full border border-gray-300 p-2 mb-4 outline-none" type="text" name="title" value="{{ old('title') }}">
         </div>
-        <div class="form-group">
-            <label>
-                内容 (任意)
-                <textarea name="body">{{ old('body') }}</textarea>
-            </label>
+        <div>
+            <p>内容 (任意)</p>
+            <textarea class="w-full p-3 h-60 border border-gray-300 outline-none" name="body">{{ old('body') }}</textarea>
         </div>
-        <div class="form-button">
-            <button>投稿する</button>
+        <div>
+            <button class="w-full flex justify-center text-base leading-6 bg-orange-400 mt-5 hover:bg-orange-500 text-white py-2 px-4 rounded-full">投稿する</button>
         </div>
     </form>
-        <div class="cancel-link">
-            <a href="{{ route('posts.index') }}">キャンセル</a>
+        <div>
+            <a href="{{ route('posts.index') }}" class="flex justify-center text-base leading-6 border border-gray-600 bg-white mt-3 hover:bg-gray-100 text-gray-600 py-2 px-4 rounded-full">キャンセル</a>
         </div>
-</x-layout>
+</div>
+<hr class="border-gray-200">
+@endsection

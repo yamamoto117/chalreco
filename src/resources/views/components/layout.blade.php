@@ -7,7 +7,7 @@
     <title>
         @yield('title')  / チャレコ
     </title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 </head>
 <body>
 <div class="p-relative h-screen bg-white">

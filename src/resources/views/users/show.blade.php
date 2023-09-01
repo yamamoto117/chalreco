@@ -34,7 +34,7 @@
                         <div class="flex flex-1">
                             <div style="margin-top: -6rem;">
                                 <div style="height:9rem; width:9rem;" class="md rounded-full relative avatar">
-                                    <img style="height:9rem; width:9rem;" class="md rounded-full relative border-4 border-white" src="{{ asset('images/profile-icon.png')}}" alt="icon">
+                                    <img style="height:9rem; width:9rem;" class="md rounded-full relative border-4 border-white" src="/images/profile-icon.png" alt="icon">
                                     <div class="absolute"></div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                     <div class="flex-shrink-0 group block">
                         <div class="flex items-center hover:opacity-80 transition-opacity">
                             <a href="{{ route('users.show', ['name' => $post->user->name]) }}">
-                                <img class="inline-block h-10 w-10 object-cover rounded-full" src="{{ asset('images/profile-icon.png')}}" alt="icon" />
+                                <img class="inline-block h-10 w-10 object-cover rounded-full" src="/images/profile-icon.png" alt="icon" />
                             </a>
                             <div class="ml-2">
                                 <p class="text-base leading-6 font-medium text-gray-700">

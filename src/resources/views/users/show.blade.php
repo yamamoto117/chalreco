@@ -4,10 +4,8 @@
 
 @section('content')
 <main role="main">
-    <div class="flex" style="width: 990px;">
-        <section class="w-3/5" style="max-width:600px;">
-            <!--Content (Center)-->
-                <!-- Nav back-->
+    <div class="flex">
+        <section class="w-full">
             <div>
                 <div class="flex justify-start">
                     <div class="py-2 mx-2">
@@ -23,14 +21,11 @@
                 </div>
                 <hr class="border-gray-200">
             </div>
-
-            <!-- User card-->
             <div>
                 <div class="w-full bg-gray-200" style="height: 200px;">
                 </div>
                 <div class="p-4">
                     <div class="relative flex w-full">
-                        <!-- Avatar -->
                         <div class="flex flex-1">
                             <div style="margin-top: -6rem;">
                                 <div style="height:9rem; width:9rem;" class="md rounded-full relative avatar">
@@ -40,10 +35,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Profile info -->
                     <div class="space-y-1 justify-center w-full mt-3 ml-3 pb-10">
-                    <!-- User basic-->
                         <div>
                             <h2 class="text-xl leading-6 font-bold text-gray-700">{{ $user->name }}</h2>
                         </div>

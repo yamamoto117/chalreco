@@ -19,8 +19,8 @@
 </div>
 <article>
     <div class="flex flex-shrink-0 p-4">
-        <div class="flex-shrink-0 group block">
-            <div class="flex items-center">
+        <div class="flex-shrink-0 group block w-full">
+            <div class="flex items-center justify-between">
                 <div class="flex items-center hover:opacity-80 transition-opacity">
                     <a href="{{ route('users.show', ['name' => $post->user->name]) }}">
                         <img class="inline-block h-10 w-10 object-cover rounded-full" src="/images/profile-icon.png" alt="icon" />
@@ -35,7 +35,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex items-center" style="margin-left: 363px;">
+                <div class="flex items-center">
                     @if( Auth::id() === $post->user_id )
                     <a href="{{ route('posts.edit', $post) }}" class="px-2 py-1 text-gray-400 border border-gray-400 font-semibold rounded hover:bg-gray-100">編集</a>
                     <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post" class="pl-2">

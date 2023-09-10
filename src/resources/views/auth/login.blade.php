@@ -49,6 +49,7 @@
             </a>
         </div>
     </div>
+    <hr class="border-gray-200">
 </x-guest-layout>
 
 

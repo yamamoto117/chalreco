@@ -690,44 +690,29 @@ select {
 .bottom-0 {
   bottom: 0px;
 }
+.bottom-16 {
+  bottom: 4rem;
+}
 .left-0 {
   left: 0px;
+}
+.left-2 {
+  left: 0.5rem;
 }
 .right-0 {
   right: 0px;
 }
-.top-0 {
-  top: 0px;
-}
-.bottom-4 {
-  bottom: 1rem;
-}
 .right-4 {
   right: 1rem;
 }
-.bottom-10 {
-  bottom: 2.5rem;
-}
-.bottom-20 {
-  bottom: 5rem;
-}
-.right-10 {
-  right: 2.5rem;
-}
-.bottom-16 {
-  bottom: 4rem;
-}
-.left-2 {
-  left: 0.5rem;
+.top-0 {
+  top: 0px;
 }
 .z-0 {
   z-index: 0;
 }
 .z-50 {
   z-index: 50;
-}
-.z-10 {
-  z-index: 10;
 }
 .float-right {
   float: right;
@@ -800,18 +785,6 @@ select {
 }
 .mt-8 {
   margin-top: 2rem;
-}
-.ml-10 {
-  margin-left: 2.5rem;
-}
-.ml-20 {
-  margin-left: 5rem;
-}
-.ml-40 {
-  margin-left: 10rem;
-}
-.mr-4 {
-  margin-right: 1rem;
 }
 .block {
   display: block;
@@ -1144,10 +1117,6 @@ select {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 .fill-current {
   fill: currentColor;

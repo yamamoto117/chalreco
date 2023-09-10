@@ -53,6 +53,7 @@
             </div>
         </form>
     </div>
+    <hr class="border-gray-200">
 </x-guest-layout>
 
 {{-- <x-guest-layout>

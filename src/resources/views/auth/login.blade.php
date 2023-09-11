@@ -31,11 +31,11 @@
                 </label>
             </div>
             <div class="pt-4">
-                @if (Route::has('password.request'))
+                {{-- @if (Route::has('password.request'))
                     <a class="underline text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('パスワードを忘れた場合はこちら') }}
                     </a>
-                @endif
+                @endif --}}
                 <x-button>
                     {{ __('ログイン') }}
                 </x-button>

@@ -22,14 +22,13 @@
                     <hr class="border-gray-200">
                 </div>
                 <div>
-                    <div class="w-full bg-gray-200" style="height: 200px;">
-                    </div>
+                    <div class="w-full bg-gray-200" style="height: 200px;"></div>
                     <div class="p-4">
                         <div class="relative flex w-full">
                             <div class="flex flex-1">
                                 <div style="margin-top: -6rem;">
-                                    <div style="height:9rem; width:9rem;" class="md rounded-full relative avatar">
-                                        <img style="height:9rem; width:9rem;" class="md rounded-full relative border-4 border-white" src="/images/profile-icon.png" alt="icon">
+                                    <div style="height:9rem; width:9rem;" class="rounded-full relative avatar">
+                                        <img style="height:9rem; width:9rem;" class="rounded-full relative border-4 border-white" src="/images/profile-icon.png" alt="icon">
                                         <div class="absolute"></div>
                                     </div>
                                 </div>
@@ -43,38 +42,21 @@
                     </div>
                     <hr class="border-gray-200">
                 </div>
+                <h2 class="font-bold text-center bg-orange-400 text-white py-2">チャレンジ中</h2>
+                <hr class="border-gray-200">
                 @foreach ($posts as $post)
                 <article class="hover:bg-gray-100 transition duration-350 ease-in-out cursor-pointer" onclick="window.location.href='{{ route('posts.show', $post) }}';">
-                    <div class="flex flex-shrink-0 p-4">
-                        <div class="flex-shrink-0 group block">
-                            <div class="flex items-center hover:opacity-80 transition-opacity">
-                                <a href="{{ route('users.show', ['name' => $post->user->name]) }}">
-                                    <img class="inline-block h-10 w-10 object-cover rounded-full" src="/images/profile-icon.png" alt="icon" />
-                                </a>
-                                <div class="ml-2">
-                                    <p class="text-base leading-6 font-medium text-gray-700">
-                                        <a href="{{ route('users.show', ['name' => $post->user->name]) }}">
-                                            <span class="text-sm leading-5 font-medium text-gray-400">
-                                                {{ $post->user->name }}
-                                            </span>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
+                    <div class="p-2 break-words flex items-center">
+                        <p class="text-gray-400 mr-4">{{ $post->created_at->format('Y/m/d') }}</p>
+                        <div class="font-semibold text-gray-700">
+                            {{ $post->title }}
                         </div>
-                    </div>
-                    <div class="px-16 pb-5 break-words">
-                        <p class="text-base width-auto font-medium flex-shrink">
-                            <div class="container font-semibold">
-                                {{ $post->title }}
-                            </div>
-                            <p class="pt-3 pb-5">{!! nl2br(e($post->body)) !!}</p>
-                            <p class="text-gray-400">{{ $post->created_at->format('Y/m/d H:i') }}</p>
-                        </p>
                     </div>
                 </article>
                 <hr class="border-gray-200">
                 @endforeach
+                <h2 class="font-bold text-center bg-gray-400 text-white py-2">過去のチャレンジ</h2>
+                <hr class="border-gray-200">
             </section>
         </div>
     </main>

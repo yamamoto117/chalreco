@@ -15,9 +15,7 @@
             <img class="inline-block h-10 w-10 rounded-full" src="/images/profile-icon.png" alt="icon" />
         </a>
         <a href="{{ route('posts.index') }}" class="mx-auto">
-            <svg viewBox="0 0 24 24" class="h-12 w-12 text-orange-400" fill="currentColor">
-                <polygon points="10 2, 20 20, 0 20"/>
-            </svg>
+            <img src="/images/logo.png" alt="logo" class="logo w-10 h-auto">
         </a>
         <div id="menuDropdown" class="absolute left-2 mt-2 rounded-md hidden">
             <div class="rounded-md bg-white shadow-xs">
@@ -38,9 +36,7 @@
             <div class="fixed h-screen">
                 <div class="flex items-center mb-6">
                     <a href="{{ route('posts.index') }}" class="flex items-center">
-                        <svg viewBox="0 0 24 24" class="h-12 w-12 text-orange-400" fill="currentColor">
-                            <polygon points="10 2, 20 20, 0 20"/>
-                        </svg>
+                        <img src="/images/logo.png" alt="logo" class="logo w-10 h-auto">
                         <h1 class="ml-2 text-3xl font-bold text-gray-700 hidden md:hidden lg:inline">チャレコ</h1>
                     </a>
                 </div>

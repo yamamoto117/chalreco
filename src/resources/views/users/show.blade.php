@@ -42,21 +42,34 @@
                     </div>
                     <hr class="border-gray-200">
                 </div>
-                <h2 class="font-bold text-center bg-orange-400 text-white py-2">チャレンジ中</h2>
-                <hr class="border-gray-200">
-                @foreach ($posts as $post)
-                <article class="hover:bg-gray-100 transition duration-350 ease-in-out cursor-pointer" onclick="window.location.href='{{ route('posts.show', $post) }}';">
-                    <div class="p-2 break-words flex items-center">
-                        <p class="text-gray-400 mr-4">{{ $post->created_at->format('Y/m/d') }}</p>
-                        <div class="font-semibold text-gray-700">
-                            {{ $post->title }}
+                <div class="flex flex-col flex-1 overflow-hidden">
+                    <div class="container pt-4 bg-gray-200">
+                        <div class="flex flex-wrap justify-center">
+                            <div class="w-full">
+                                <div class="flex items-center justify-center py-4 bg-white border-2 border-orange-400">
+                                    <div class="flex items-center">
+                                        <div class="text-gray-700 mr-2">チャレンジ中</div>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{ count($posts) }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                        <hr class="border-gray-200">
+                        @foreach ($posts as $post)
+                        <article class="hover:bg-gray-100 transition duration-350 ease-in-out cursor-pointer bg-white" onclick="window.location.href='{{ route('posts.show', $post) }}';">
+                            <div class="p-4 break-words flex items-center">
+                                <p class="text-gray-400 mr-4">{{ $post->created_at->format('Y/m/d') }}</p>
+                                <div class="font-semibold text-gray-700">
+                                    {{ $post->title }}
+                                </div>
+                            </div>
+                        </article>
+                        <hr class="border-gray-200">
+                        @endforeach
                         </div>
                     </div>
-                </article>
-                <hr class="border-gray-200">
-                @endforeach
-                <h2 class="font-bold text-center bg-gray-400 text-white py-2">過去のチャレンジ</h2>
-                <hr class="border-gray-200">
+                </div>
             </section>
         </div>
     </main>

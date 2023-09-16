@@ -50,6 +50,7 @@ class PostController extends Controller
 
     public function update(PostRequest $request, Post $post)
     {
+        $post->status = $request->status;
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();

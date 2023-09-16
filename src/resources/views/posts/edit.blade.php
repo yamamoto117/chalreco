@@ -12,13 +12,20 @@
                 <div class="text-red-500 pb-4">{{ $message }}</div>
             @enderror
 
+            <div class="mb-4">
+                <p>ステータス</p>
+                <select class="w-full border border-gray-300 outline-none" name="status">
+                    <option value="in_progress" @if(old('status', $post->status) == 'in_progress') selected @endif>チャレンジ中</option>
+                    <option value="completed" @if(old('status', $post->status) == 'completed') selected @endif>チャレンジ終了</option>
+                </select>
+            </div>
             <div>
                 <p>タイトル <span class="text-red-500">(必須)</span></p>
-                <input class="w-full bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" type="text" name="title" value="{{ old('title', $post->title) }}">
+                <input class="w-full border border-gray-300 mb-4 outline-none" type="text" name="title" value="{{ old('title', $post->title) }}">
             </div>
             <div>
                 <p>内容 (任意)</p>
-                <textarea class="w-full bg-gray-100 p-3 h-60 border border-gray-300 outline-none" name="body">{{ old('body', $post->body) }}</textarea>
+                <textarea class="w-full h-60 border border-gray-300 outline-none" name="body">{{ old('body', $post->body) }}</textarea>
             </div>
             <div>
                 <button class="w-full flex justify-center text-base leading-6 bg-orange-400 mt-5 hover:bg-orange-500 text-white py-2 px-4 rounded-full">上書きする</button>

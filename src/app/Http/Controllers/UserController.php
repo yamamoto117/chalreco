@@ -11,10 +11,14 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
         $posts = $user->posts->sortByDesc('created_at');
+        $inProgressCount = $user->posts->where('status', 'in_progress')->count();
+        $inCompletedCount = $user->posts->where('status', 'completed')->count();
 
         return view('users.show', [
             'user' => $user,
             'posts' => $posts,
+            'inProgressCount' => $inProgressCount,
+            'inCompletedCount' => $inCompletedCount,
         ]);
     }
 }

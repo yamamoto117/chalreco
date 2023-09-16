@@ -45,16 +45,24 @@
                 <div class="flex flex-col flex-1 overflow-hidden">
                     <div class="container pt-4 bg-gray-200">
                         <div class="flex flex-wrap justify-center">
-                            <div class="w-full">
-                                <div class="flex items-center justify-center py-4 bg-white border-2 border-orange-400">
+                            <div class="w-5/12 mr-2">
+                                <div class="flex items-center justify-center py-4 bg-white border-2 border-orange-400 rounded">
                                     <div class="flex items-center">
                                         <div class="text-gray-700 mr-2">チャレンジ中</div>
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{ count($posts) }}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{ $inProgressCount }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-5/12 ml-2">
+                                <div class="flex items-center justify-center py-4 bg-white border-2 border-gray-400 rounded">
+                                    <div class="flex items-center">
+                                        <div class="text-gray-700 mr-2">チャレンジ終了</div>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{ $inCompletedCount }}</h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4">
+                        <div class="m-4">
                         <hr class="border-gray-200">
                         @foreach ($posts as $post)
                         <article class="hover:bg-gray-100 transition duration-350 ease-in-out cursor-pointer bg-white" onclick="window.location.href='{{ route('posts.show', $post) }}';">
@@ -63,6 +71,13 @@
                                 <div class="font-semibold text-gray-700">
                                     {{ $post->title }}
                                 </div>
+                                <p class="ml-auto text-gray-700 w-36">
+                                    @if($post->status == 'in_progress')
+                                        <span class="border-2 border-orange-400 px-4 py-1 rounded text-sm">チャレンジ中</span>
+                                    @elseif($post->status == 'completed')
+                                        <span class="border-2 border-gray-400 px-2 py-1 rounded text-sm">チャレンジ終了</span>
+                                    @endif
+                                </p>
                             </div>
                         </article>
                         <hr class="border-gray-200">

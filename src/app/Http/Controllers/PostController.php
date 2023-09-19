@@ -66,4 +66,25 @@ class PostController extends Controller
         return redirect()
             ->route('posts.index');
     }
+
+    public function good(Request $request, Post $post)
+    {
+        $post->goods()->detach($request->user()->id);
+        $post->goods()->attach($request->user()->id);
+
+        return [
+            'id' => $post->id,
+            'countGoods' => $post->count_goods,
+        ];
+    }
+
+    public function ungood(Request $request, Post $post)
+    {
+        $post->goods()->detach($request->user()->id);
+
+        return [
+            'id' => $post->id,
+            'countGoods' => $post->count_goods,
+        ];
+    }
 }

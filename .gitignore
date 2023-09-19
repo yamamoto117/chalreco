@@ -1,5 +1,8 @@
 /src/node_modules
+/src/public/css
 /src/public/hot
+/src/public/js
+/src/public/mix-manifest.json
 /src/public/storage
 /src/storage/*.key
 /src/vendor

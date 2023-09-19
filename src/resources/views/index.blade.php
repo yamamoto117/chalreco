@@ -30,6 +30,13 @@
                 </div>
                 <p class="pt-3 pb-5">{!! nl2br(e($post->body)) !!}</p>
                 <p class="text-gray-400">{{ $post->created_at->format('Y/m/d H:i') }}</p>
+                <post-good
+                    :initial-is-gooded-by='@json($post->isGoodedBy(Auth::user()))'
+                    :initial-count-goods='@json($post->count_goods)'
+                    :authorized='@json(Auth::check())'
+                    endpoint="{{ route('posts.good', ['post' => $post]) }}"
+                >
+                </post-good>
             </p>
         </div>
     </article>

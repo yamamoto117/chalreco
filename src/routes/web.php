@@ -18,30 +18,38 @@ use App\Http\Controllers\UserController;
 Route::get('/', [PostController::class, 'index'])
     ->name('posts.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::prefix('posts')->name('posts.')->group(function () {
+    Route::get('/{post}', [PostController::class, 'show'])
+        ->name('show')
+        ->where('post', '[0-9]+');
 
-Route::get('/posts/{post}', [PostController::class, 'show'])
-    ->name('posts.show')
-    ->where('post', '[0-9]+');
+    Route::get('/create', [PostController::class, 'create'])
+        ->name('create')
+        ->middleware('auth');
 
-Route::get('/posts/create', [PostController::class, 'create'])
-    ->name('posts.create')
-    ->middleware('auth');
-Route::post('/posts/store', [PostController::class, 'store'])
-    ->name('posts.store');
+    Route::post('/store', [PostController::class, 'store'])
+        ->name('store');
 
-Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
-    ->name('posts.edit')
-    ->where('post', '[0-9]+');
-Route::patch('/posts/{post}/update', [PostController::class, 'update'])
-    ->name('posts.update')
-    ->where('post', '[0-9]+');
+    Route::get('/{post}/edit', [PostController::class, 'edit'])
+        ->name('edit')
+        ->where('post', '[0-9]+');
 
-Route::delete('/posts/{post}/destroy', [PostController::class, 'destroy'])
-    ->name('posts.destroy')
-    ->where('post', '[0-9]+');
+    Route::patch('/{post}/update', [PostController::class, 'update'])
+        ->name('update')
+        ->where('post', '[0-9]+');
+
+    Route::delete('/{post}/destroy', [PostController::class, 'destroy'])
+        ->name('destroy')
+        ->where('post', '[0-9]+');
+
+    Route::put('/{post}/good', [PostController::class, 'good'])
+        ->name('good')
+        ->middleware('auth');
+
+    Route::delete('/{post}/good', [PostController::class, 'ungood'])
+        ->name('ungood')
+        ->middleware('auth');
+});
 
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{name}', [UserController::class, 'show'])->name('show');

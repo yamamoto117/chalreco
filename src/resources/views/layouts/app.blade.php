@@ -91,7 +91,7 @@
         </aside>
         <main class="w-full md:w-5/12">
             <div class="h-20">
-                <section class="border border-y-0 border-gray-200">
+                <section class="border border-y-0 border-gray-200" id="app">
                     <div class="flex sticky top-0 bg-white">
                         <div class="flex-1">
                             <h2 class="px-6 py-4 text-xl font-semibold text-gray-700">{{ $title }}</h2>
@@ -100,6 +100,7 @@
                     </div>
                     {{ $slot }}
                 </section>
+                <script src="{{ mix('js/app.js') }}"></script>
             </div>
         </main>
         <aside class="hidden md:block overflow-y-auto">

@@ -1,17 +1,11 @@
 <template>
-  <div class="flex items-center w-10 h-10 text-gray-400 mt-4">
-    <button
-      type="button"
-      class="mr-2"
-      @click="clickGood"
-    >
-    <svg
-      v-if="!isGoodedBy"
-      class="h-6 w-6 fill-current"
-      viewBox="0 0 512 512"
-      >
-        <g>
-          <path d="M459.12,295.188c8.203-9.359,13.609-21.297,13.609-34.469c0-33.922-27.594-61.516-61.5-61.516h-78.531
+    <div class="flex items-center w-10 h-10 text-gray-400 mt-2 -mb-2" @mouseover="hovering = true"
+        @mouseleave="hovering = false">
+        <button type="button" class="mr-2 hover:text-orange-400 flex items-center" @click="clickGood">
+            <svg v-if="!isGoodedBy" :class="hovering ? 'h-5 w-5 fill-current text-orange-400' : 'h-5 w-5 fill-current'"
+                viewBox="0 0 512 512">
+                <g>
+                    <path d="M459.12,295.188c8.203-9.359,13.609-21.297,13.609-34.469c0-33.922-27.594-61.516-61.5-61.516h-78.531
                     c-17.25-0.797-21.453-4.063-21.625-4.203l-0.141-0.188c0.469-4.563,8.375-15.719,12.25-21.156
                     c5.563-7.813,10.813-15.203,13.813-23.406l1.328-3.594c7.672-20.641,21.969-59.063,6.469-103.219
                     C335.401,16.656,314.51,0,290.292,0c-28.203,0-51.656,22.563-57.016,54.891c-1.797,10.875-25.641,51.875-71.156,105.391
@@ -29,79 +23,75 @@
                     c36.891-43.391,73.016-94.906,76.734-117.406c3.656-22.063,17.984-34.156,32.563-34.156c12.25,0,24.688,8.547,31.125,26.875
                     c13.406,38.219-1.203,72.25-7.688,90.063c-6.531,17.844-42.547,46.813-20.594,70.359c8.156,8.75,24.172,11.281,39.016,11.922
                     h79.078c20.297,0,36.719,16.438,36.719,36.719c0,8.672-4.906,16.469-11.406,22h-23.704c-4.563,0-8.266,3.688-8.266,8.25
-                    S408.276,299.25,412.838,299.25z"
-          ></path>
-        </g>
-      </svg>
-      <svg
-        v-else
-        class="h-6 w-6 fill-current text-orange-400"
-      　viewBox="0 0 512 512"
-      >
-        <g>
-            <path d="M433.051,294.727c14.375,0.891,35.438-14.531,35.438-33.516c0-22.438-18.188-40.656-40.672-40.656h-87.531
+                    S408.276,299.25,412.838,299.25z"></path>
+                </g>
+            </svg>
+            <svg v-else class="h-5 w-5 fill-current text-orange-400" viewBox="0 0 512 512">
+                <g>
+                    <path d="M433.051,294.727c14.375,0.891,35.438-14.531,35.438-33.516c0-22.438-18.188-40.656-40.672-40.656h-87.531
                 c-16.438-0.703-34.156-3.5-43.203-13.188c-24.297-26.063,15.578-58.156,22.797-77.891c7.188-19.734,23.359-57.422,8.516-99.719
                 c-15.594-44.453-63.047-36.922-70.5,8.063c-4.109,24.906-44.125,81.953-84.969,129.984c-26.438,31.109-56.438,51.125-88.953,83.625
                 c-57.578,57.578-57.531,192.562,25.016,233.828c29.453,14.734,91.453,23.813,139.766,25.609
                 c66.734,2.484,77.438,0.547,104.656-2.469l25.531-3.688c19.328-3.156,34.063-19.781,34.063-39.984
                 c0-7.188-2.031-13.844-5.297-19.719c20.781-1.797,37.156-19.031,37.156-40.281c0-12.266-3.703-23.25-20.359-30.594
-                c21.359-1.25,38.328-18.766,38.328-40.406C462.832,315.055,450.191,299.493,433.051,294.727z"
-                ></path>
-        </g>
-        </svg>
-    </button>
-    <span :class="isGoodedBy ? 'text-orange-400' : 'text-gray-400'">{{ countGoods }}</span>
-  </div>
+                c21.359-1.25,38.328-18.766,38.328-40.406C462.832,315.055,450.191,299.493,433.051,294.727z"></path>
+                </g>
+            </svg>
+            <span class="ml-2 text-sm" :class="isGoodedBy || hovering ? 'text-orange-400' : 'text-gray-400'">{{ countGoods
+            }}</span>
+        </button>
+    </div>
 </template>
 
 <script>
 export default {
     props: {
-      initialIsGoodedBy: {
-        type: Boolean,
-        default: false,
-      },
-      initialCountGoods: {
-        type: Number,
-        default: 0,
-      },
-      authorized: {
-        type: Boolean,
-        default: false,
-      },
-      endpoint: {
-        type: String,
-      },
+        initialIsGoodedBy: {
+            type: Boolean,
+            default: false,
+        },
+        initialCountGoods: {
+            type: Number,
+            default: 0,
+        },
+        authorized: {
+            type: Boolean,
+            default: false,
+        },
+        endpoint: {
+            type: String,
+        },
     },
     data() {
-      return {
-        isGoodedBy: this.initialIsGoodedBy,
-        countGoods: this.initialCountGoods,
-      }
+        return {
+            isGoodedBy: this.initialIsGoodedBy,
+            countGoods: this.initialCountGoods,
+            hovering: false
+        }
     },
     methods: {
-      clickGood() {
-        if (!this.authorized) {
-          alert('いいね機能はログイン中のみ使用できます')
-          return
-        }
+        clickGood() {
+            if (!this.authorized) {
+                alert('いいね機能はログイン中のみ使用できます')
+                return
+            }
 
-        this.isGoodedBy
-          ? this.ungood()
-          : this.good()
-      },
-      async good() {
-        const response = await axios.put(this.endpoint)
+            this.isGoodedBy
+                ? this.ungood()
+                : this.good()
+        },
+        async good() {
+            const response = await axios.put(this.endpoint)
 
-        this.isGoodedBy = true
-        this.countGoods = response.data.countGoods
-      },
-      async ungood() {
-        const response = await axios.delete(this.endpoint)
+            this.isGoodedBy = true
+            this.countGoods = response.data.countGoods
+        },
+        async ungood() {
+            const response = await axios.delete(this.endpoint)
 
-        this.isGoodedBy = false
-        this.countGoods = response.data.countGoods
-      },
+            this.isGoodedBy = false
+            this.countGoods = response.data.countGoods
+        },
     },
-  }
+}
 </script>

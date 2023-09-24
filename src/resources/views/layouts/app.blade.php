@@ -101,6 +101,7 @@
                     {{ $slot }}
                 </section>
                 <script src="{{ mix('js/app.js') }}"></script>
+                <div class="h-12 md:hidden"></div>
             </div>
         </main>
         <aside class="hidden md:block overflow-y-auto">

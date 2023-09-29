@@ -2,7 +2,8 @@
     <div class="flex items-center w-10 h-10 text-gray-400 mt-2 -mb-2" @mouseover="hovering = true"
         @mouseleave="hovering = false">
         <button type="button" class="mr-2 hover:text-orange-400 flex items-center" @click="clickGood">
-            <svg v-if="!isGoodedBy" :class="hovering ? 'h-5 w-5 fill-current text-orange-400' : 'h-5 w-5 fill-current'"
+            <svg v-if="!isGoodedBy"
+                :class="isGoodedBy || hovering ? 'h-5 w-5 fill-current text-orange-400' : 'h-5 w-5 fill-current text-gray-400'"
                 viewBox="0 0 512 512">
                 <g>
                     <path d="M459.12,295.188c8.203-9.359,13.609-21.297,13.609-34.469c0-33.922-27.594-61.516-61.5-61.516h-78.531
@@ -37,7 +38,8 @@
                 c21.359-1.25,38.328-18.766,38.328-40.406C462.832,315.055,450.191,299.493,433.051,294.727z"></path>
                 </g>
             </svg>
-            <span class="ml-2 text-sm" :class="isGoodedBy || hovering ? 'text-orange-400' : 'text-gray-400'">{{ countGoods
+            <span class="ml-2 text-sm" :class="isGoodedBy || hovering ? 'text-orange-400' : 'text-gray-400'">{{
+                countGoods
             }}</span>
         </button>
     </div>
@@ -71,6 +73,10 @@ export default {
     },
     methods: {
         clickGood() {
+            if (this.isGoodedBy) {
+                this.hovering = false;
+            }
+
             if (!this.authorized) {
                 alert('いいね機能はログイン中のみ使用できます')
                 return

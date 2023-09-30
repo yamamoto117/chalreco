@@ -32,7 +32,7 @@ class PostRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'タイトルは必須です',
+            'title.required' => 'チャレンジ名は必須です',
             'title.max' => ':max 文字以内で入力してください',
             'body.max' => ':max 文字以内で入力してください',
         ];

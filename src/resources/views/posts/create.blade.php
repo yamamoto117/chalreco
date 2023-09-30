@@ -12,11 +12,11 @@
             @enderror
 
             <div class="mb-4">
-                <p>タイトル <span class="text-red-500">(必須)</span></p>
+                <p>チャレンジ名 <span class="text-red-500">(必須)</span></p>
                 <input class="w-full border border-gray-300 outline-none" type="text" name="title" value="{{ old('title') }}">
             </div>
             <div class="mb-4">
-                <p>内容 (任意)</p>
+                <p>自由入力欄</p>
                 <textarea class="w-full h-60 border border-gray-300 outline-none" name="body">{{ old('body') }}</textarea>
             </div>
             <div>

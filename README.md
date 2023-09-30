@@ -17,3 +17,6 @@ https://chalreco-ed297b86e79e.herokuapp.com/
 * ユーザー登録、ログイン機能
 * 投稿機能
 * 閲覧機能
+
+# ER図
+![er](https://github.com/yamamoto117/chalreco/assets/99392507/688d8a7d-555c-43e1-876d-bd8a8ec519d6)

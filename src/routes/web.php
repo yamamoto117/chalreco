@@ -53,6 +53,10 @@ Route::prefix('posts')->name('posts.')->group(function () {
 
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{name}', [UserController::class, 'show'])->name('show');
+    Route::middleware('auth')->group(function () {
+        Route::put('/{name}/follow', [UserController::class, 'follow'])->name('follow');
+        Route::delete('/{name}/follow', [UserController::class, 'unfollow'])->name('unfollow');
+    });
 });
 
 require __DIR__ . '/auth.php';

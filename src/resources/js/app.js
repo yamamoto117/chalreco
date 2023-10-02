@@ -34,10 +34,12 @@
 import './bootstrap'
 import Vue from 'vue'
 import PostGood from './components/PostGood'
+import FollowButton from './components/FollowButton'
 
 const app = new Vue({
     el: '#app',
     components: {
         PostGood,
+        FollowButton,
     }
 })

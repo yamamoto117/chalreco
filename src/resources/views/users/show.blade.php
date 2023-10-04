@@ -47,8 +47,8 @@
                                 <h2 class="text-xl leading-6 font-bold text-gray-700">{{ $user->name }}</h2>
                             </div>
                             <div class="flex items-center text-sm text-gray-400">
-                                <a href="" class="mr-4"><span class="font-semibold">{{ $user->count_followings }}</span> フォロー</a>
-                                <a href=""><span class="font-semibold">{{ $user->count_followers }}</span> フォロワー</a>
+                                <a href="{{ route('users.followings', ['name' => $user->name]) }}" class="mr-4"><span class="font-semibold">{{ $user->count_followings }}</span> フォロー</a>
+                                <a href="{{ route('users.followers', ['name' => $user->name]) }}"><span class="font-semibold">{{ $user->count_followers }}</span> フォロワー</a>
                             </div>
                         </div>
                     </div>

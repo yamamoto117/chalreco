@@ -56,7 +56,7 @@
                     <p class="mt-2">{!! nl2br(e($post->body)) !!}</p>
                 </a>
             </div>
-            <div>
+            <div class="flex items-center w-10 h-10 text-gray-400 mt-2 -mb-2">
                 <post-good
                     :initial-is-gooded-by='@json($post->isGoodedBy(Auth::user()))'
                     :initial-count-goods='@json($post->count_goods)'

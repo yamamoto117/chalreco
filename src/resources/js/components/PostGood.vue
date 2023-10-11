@@ -1,6 +1,5 @@
 <template>
-    <div class="flex items-center w-10 h-10 text-gray-400 mt-2 -mb-2" @mouseover="hovering = true"
-        @mouseleave="hovering = false">
+    <div @mouseover="hovering = true" @mouseleave="hovering = false">
         <button type="button" class="mr-2 hover:text-orange-400 flex items-center" @click="clickGood">
             <svg v-if="!isGoodedBy"
                 :class="isGoodedBy || hovering ? 'h-5 w-5 fill-current text-orange-400' : 'h-5 w-5 fill-current text-gray-400'"

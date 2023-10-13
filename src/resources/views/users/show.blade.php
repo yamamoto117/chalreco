@@ -103,11 +103,11 @@
                         <div class="mt-2">
                             @foreach ($posts as $post)
                             <article class="bg-white">
-                                <div class="p-2 break-words flex items-center">
+                                <div class="px-2 py-3 break-words flex items-center">
                                     <a class="flex items-center" href="{{ route('posts.show', $post) }}">
                                         <p class="text-gray-700 mr-2">
                                             @if($post->status == 'in_progress')
-                                                <svg class="h-6 w-6 text-orange-400 fill-current" viewBox="0 0 512 512">
+                                                <svg class="h-5 w-5 text-orange-400 fill-current" viewBox="0 0 512 512">
                                                     <g>
                                                         <path d="M265.771,394.438c-85.91-108.512,26.687-187.388,36.486-249.025c15.86-99.727-73.055-125.767-73.055-125.767
                                                             c10.545,33.123-14.781,82.696-61.696,122.337c-49.639,41.925-85.576,108.769-86.457,171.678c-0.382,4.874-0.647,9.789-0.647,14.764
@@ -121,7 +121,7 @@
                                                     </g>
                                                 </svg>
                                             @elseif($post->status == 'completed')
-                                                <svg class="h-6 w-6 text-gray-400 fill-current" viewBox="0 0 512 512">
+                                                <svg class="h-5 w-5 text-gray-400 fill-current" viewBox="0 0 512 512">
                                                     <g>
                                                         <path d="M265.771,394.438c-85.91-108.512,26.687-187.388,36.486-249.025c15.86-99.727-73.055-125.767-73.055-125.767
                                                             c10.545,33.123-14.781,82.696-61.696,122.337c-49.639,41.925-85.576,108.769-86.457,171.678c-0.382,4.874-0.647,9.789-0.647,14.764

@@ -19,7 +19,7 @@ https://chalreco-ed297b86e79e.herokuapp.com/
 * 閲覧機能
 
 # ER図
-![er](https://github.com/yamamoto117/chalreco/assets/99392507/688d8a7d-555c-43e1-876d-bd8a8ec519d6)
+![er](https://github.com/yamamoto117/chalreco/assets/99392507/0367f226-321f-412d-b1b1-bf420bebb33f)
 
 # インフラ構成図
 ![infra](https://github.com/yamamoto117/chalreco/assets/99392507/406908d4-7760-42b9-a3a6-f42b41ffd42b)

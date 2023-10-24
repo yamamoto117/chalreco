@@ -23,19 +23,7 @@
                                 name="password"
                                 autocomplete="current-password" />
             </div>
-            <!-- Remember Me -->
-            {{-- <div>
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-gray-700">{{ __('ログイン状態を保存する') }}</span>
-                </label>
-            </div> --}}
             <div>
-                {{-- @if (Route::has('password.request'))
-                    <a class="underline text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('パスワードを忘れた場合はこちら') }}
-                    </a>
-                @endif --}}
                 <x-button>
                     {{ __('ログイン') }}
                 </x-button>
@@ -46,6 +34,13 @@
             <p>初めての方はこちら</p>
             <a href="{{ route('register') }}" class="flex justify-center text-base leading-6 border border-gray-600 bg-white mt-3 hover:bg-gray-100 text-gray-600 py-2 px-4 rounded-full">
                 {{ __('新規登録') }}
+            </a>
+        </div>
+        <hr class="border-gray-200 my-4">
+        <div>
+            <p>お試しの方はこちら</p>
+            <a href="{{ route('login.guest') }}" class="flex justify-center text-base leading-6 border border-gray-400 bg-gray-400 mt-3 hover:bg-gray-500 text-white py-2 px-4 rounded-full">
+                {{ __('ゲストログイン') }}
             </a>
         </div>
     </div>

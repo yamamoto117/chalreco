@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,6 +49,17 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    private const GUEST_USER_ID = 1;
+
+    public function guestLogin()
+    {
+        if (Auth::loginUsingId(self::GUEST_USER_ID)) {
+            return redirect('/');
+        }
 
         return redirect('/');
     }

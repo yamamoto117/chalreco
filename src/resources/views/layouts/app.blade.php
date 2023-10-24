@@ -31,7 +31,10 @@
         <div id="menuDropdown" class="absolute left-2 mt-2 rounded-md hidden">
             <div class="rounded-md bg-white shadow-xs">
                 @guest
-                <a href="{{ route('login') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100">ログイン / 新規登録</a>
+                <div>
+                    <a href="{{ route('login') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100">ログイン / 新規登録</a>
+                    <a href="{{ route('login.guest') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100">ゲストログイン</a>
+                </div>
                 @endguest
                 @auth
                 <form method="POST" action="{{ route('logout') }}">
@@ -119,6 +122,9 @@
                     @guest
                     <div class="flex border-solid border-2 border-orange-400 font-semibold rounded h-10 w-56">
                         <a href="{{ route('login') }}" class="flex items-center justify-center w-full h-full">ログイン / 新規登録</a>
+                    </div>
+                    <div class="flex border-solid border-2 border-gray-400 font-semibold rounded h-10 w-56 mt-2">
+                        <a href="{{ route('login.guest') }}" class="flex items-center justify-center w-full h-full">ゲストログイン</a>
                     </div>
                     @endguest
                     @auth

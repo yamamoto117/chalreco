@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,5 +61,7 @@ Route::prefix('users')->name('users.')->group(function () {
         Route::delete('/{name}/follow', [UserController::class, 'unfollow'])->name('unfollow');
     });
 });
+
+Route::get('guest', [AuthenticatedSessionController::class, 'guestLogin'])->name('login.guest');
 
 require __DIR__ . '/auth.php';

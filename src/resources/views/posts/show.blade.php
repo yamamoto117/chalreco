@@ -35,12 +35,14 @@
                     </div>
                     <div class="flex items-center">
                         @if( Auth::id() === $post->user_id )
-                        <a href="{{ route('posts.edit', $post) }}" class="px-2 py-1 text-gray-400 border border-gray-400 font-semibold rounded hover:bg-gray-100">編集</a>
-                        <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post" class="pl-2">
-                        @method('DELETE')
-                        @csrf
-                        <button class="px-2 py-1 text-red-400 border border-red-400 font-semibold rounded hover:bg-red-100">削除</button>
-                        </form>
+                            <dropdown-menu>
+                                <a href="{{ route('posts.edit', $post) }}" class="block px-4 py-2 text-sm text-gray-700">編集</a>
+                                <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post" class="block">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="block px-4 py-2 text-sm text-red-500">削除</button>
+                                </form>
+                          </dropdown-menu>
                         @endif
                     </div>
                 </div>

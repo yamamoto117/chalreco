@@ -36,6 +36,7 @@ import Vue from 'vue'
 import PostGood from './components/PostGood'
 import FollowButton from './components/FollowButton'
 import DropdownMenu from './components/DropdownMenu'
+import TabsComponent from './components/TabsComponent'
 
 const app = new Vue({
     el: '#app',
@@ -43,5 +44,6 @@ const app = new Vue({
         PostGood,
         FollowButton,
         DropdownMenu,
+        TabsComponent,
     }
 })

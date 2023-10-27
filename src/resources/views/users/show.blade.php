@@ -52,8 +52,11 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="border-gray-200">
                 </div>
+                <tabs-component :user="{{ $user }}" :tabs="[
+                    {name: '投稿', href: '{{ route('users.show', ['name' => $user->name]) }}', active: true},
+                    {name: 'いいね', href: '{{ route('users.goods', ['name' => $user->name]) }}', active: false}
+                ]"></tabs-component>
                 <div class="flex flex-col flex-1 overflow-hidden">
                     <div class="container p-2 bg-gray-200">
                         <div class="flex flex-wrap justify-center">

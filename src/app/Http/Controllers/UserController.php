@@ -46,6 +46,18 @@ class UserController extends Controller
         ]);
     }
 
+    public function goods(string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        $posts = $user->goods->sortByDesc('created_at');
+
+        return view('users.goods', [
+            'user' => $user,
+            'posts' => $posts,
+        ]);
+    }
+
     public function follow(Request $request, string $name)
     {
         $user = User::where('name', $name)->first();

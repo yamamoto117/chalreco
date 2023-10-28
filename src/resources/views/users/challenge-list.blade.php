@@ -85,7 +85,7 @@
                             {{ $post->title }}
                         </div>
                     </a>
-                    <div class="ml-auto">
+                    <div class="flex items-center ml-auto">
                         <post-good
                             :initial-is-gooded-by='@json($post->isGoodedBy(Auth::user()))'
                             :initial-count-goods='@json($post->count_goods)'
@@ -93,6 +93,16 @@
                             endpoint="{{ route('posts.good', ['post' => $post]) }}"
                         >
                         </post-good>
+                        @if( Auth::id() === $post->user_id )
+                            <dropdown-menu>
+                                <a href="{{ route('posts.edit', $post) }}" class="block px-4 py-2 text-sm text-gray-700">編集</a>
+                                <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post" class="block">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="block px-4 py-2 text-sm text-red-500">削除</button>
+                                </form>
+                            </dropdown-menu>
+                        @endif
                     </div>
                 </div>
             </article>

@@ -1,15 +1,19 @@
 <article class="p-4">
     <div class="flex flex-shrink-0">
-        <div class="flex-shrink-0 group block">
-            <div class="flex items-center">
-                <a href="{{ route('users.show', ['name' => $post->user->name]) }}" class="hover:opacity-80 transition-opacity">
-                    <img class="inline-block h-10 w-10 object-cover rounded-full" src="/images/profile-icon.png" alt="icon" />
-                </a>
-                <div class="ml-2 flex items-center">
-                    <a href="{{ route('users.show', ['name' => $post->user->name]) }}" class="no-underline hover:underline text-inherit">
-                        <span>{{ $post->user->name }}</span>
+        <div class="flex-shrink-0 group block w-full">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="{{ route('users.show', ['name' => $post->user->name]) }}" class="hover:opacity-80 transition-opacity">
+                        <img class="inline-block h-10 w-10 object-cover rounded-full" src="/images/profile-icon.png" alt="icon" />
                     </a>
-                    <p class="ml-2 mr-1 text-gray-400 text-sm">{{ $post->time_ago }}</p>
+                    <div class="ml-2">
+                        <div class="text-base leading-6 font-medium text-gray-700">
+                            <a href="{{ route('users.show', ['name' => $post->user->name]) }}" class="no-underline hover:underline text-inherit">
+                                <span>{{ $post->user->name }}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <span class="ml-2 mr-1 text-gray-400 text-sm">{{ $post->time_ago }}</span>
                     @if($post->status == 'in_progress')
                         <svg class="h-4 w-4 text-orange-400 fill-current" viewBox="0 0 512 512">
                             <g>
@@ -38,6 +42,18 @@
                                 c-23.831,14.93-38.512,53.425-29.361,77C349.62,100.573,360.796,121.598,348.74,134.244z"></path>
                             </g>
                         </svg>
+                    @endif
+                </div>
+                <div class="flex items-center">
+                    @if( Auth::id() === $post->user_id )
+                        <dropdown-menu>
+                            <a href="{{ route('posts.edit', $post) }}" class="block px-4 py-2 text-sm text-gray-700">編集</a>
+                            <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post" class="block">
+                                @method('DELETE')
+                                @csrf
+                                <button class="block px-4 py-2 text-sm text-red-500">削除</button>
+                            </form>
+                        </dropdown-menu>
                     @endif
                 </div>
             </div>

@@ -19,6 +19,9 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::get('/', [PostController::class, 'index'])
     ->name('posts.index');
 
+Route::get('/search', [PostController::class, 'search'])
+    ->name('search.index');
+
 Route::prefix('posts')->name('posts.')->group(function () {
     Route::get('/{post}', [PostController::class, 'show'])
         ->name('show')

@@ -11,12 +11,14 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
         $posts = $user->posts->sortByDesc('created_at');
+        $goodsPosts = $user->goods->sortByDesc('created_at');
         $inProgressCount = $user->posts->where('status', 'in_progress')->count();
         $inCompletedCount = $user->posts->where('status', 'completed')->count();
 
         return view('users.show', [
             'user' => $user,
             'posts' => $posts,
+            'goodsPosts' => $goodsPosts,
             'inProgressCount' => $inProgressCount,
             'inCompletedCount' => $inCompletedCount,
         ]);
@@ -43,18 +45,6 @@ class UserController extends Controller
         return view('users.followers', [
             'user' => $user,
             'followers' => $followers,
-        ]);
-    }
-
-    public function goods(string $name)
-    {
-        $user = User::where('name', $name)->first();
-
-        $posts = $user->goods->sortByDesc('created_at');
-
-        return view('users.goods', [
-            'user' => $user,
-            'posts' => $posts,
         ]);
     }
 

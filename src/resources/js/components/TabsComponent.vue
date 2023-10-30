@@ -1,21 +1,36 @@
 <template>
-    <div class="flex border-b">
-        <div v-for="(tab, index) in tabs" :key="index" class="w-1/2 text-center">
-            <a :class="[
-                'py-2 px-4 block hover:bg-gray-50',
-                tab.active ? 'text-blue-400 border-b-2 border-blue-400' : 'text-gray-400'
-            ]" :href="tab.href">
-                {{ tab.name }}
-            </a>
+    <div>
+        <div class="flex border-b">
+            <div v-for="(tab, index) in tabs" :key="index" class="w-full">
+                <button :class="[
+                    'w-full py-2 px-4 block hover:bg-gray-50',
+                    index === activeTabIndex ? 'text-blue-400 border-b-2 border-blue-400' : 'text-gray-400'
+                ]" @click="setActiveTab(index)">
+                    {{ tab.name }}
+                </button>
+            </div>
         </div>
+        <slot :name="'content-' + activeTabIndex" v-if="tabs.length > activeTabIndex"></slot>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        user: Object,
-        tabs: Array
+        tabs: {
+            type: Array,
+            default: () => []
+        }
+    },
+    data() {
+        return {
+            activeTabIndex: 0
+        };
+    },
+    methods: {
+        setActiveTab(index) {
+            this.activeTabIndex = index;
+        }
     }
 }
 </script>

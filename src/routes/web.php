@@ -19,6 +19,9 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::get('/', [PostController::class, 'index'])
     ->name('posts.index');
 
+Route::get('/trending', [PostController::class, 'trending'])
+    ->name('posts.trending');
+
 Route::get('/search', [PostController::class, 'search'])
     ->name('search.index');
 

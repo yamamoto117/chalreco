@@ -9,10 +9,16 @@
                 <x-back />
                 @include('users.user', ['user' => $user])
                 <tabs-component :user="{{ $user }}" :tabs="[
-                    {name: '投稿', href: '{{ route('users.show', ['name' => $user->name]) }}', active: true},
-                    {name: 'いいね', href: '{{ route('users.goods', ['name' => $user->name]) }}', active: false}
-                ]"></tabs-component>
-                @include('users.challenge-list')
+                    {name: '投稿'},
+                    {name: 'いいね'}
+                ]">
+                    <template v-slot:content-0>
+                        @include('users.challenge-list')
+                    </template>
+                    <template v-slot:content-1>
+                        @include('users.goods', ['posts' => $goodsPosts])
+                    </template>
+                </tabs-component>
             </section>
         </div>
     </main>

@@ -21,6 +21,17 @@ class PostController extends Controller
             ->with(['posts' => $posts]);
     }
 
+    public function trending()
+    {
+        $posts = Post::withCount('goods')
+            ->orderBy('goods_count', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('posts.trending')
+            ->with(['posts' => $posts]);
+    }
+
     public function show(Post $post)
     {
         return view('posts.show')

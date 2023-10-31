@@ -1,4 +1,4 @@
-<article class="p-4">
+<article class="p-4" :key="{{ $key ?? '' }}">
     <div class="flex flex-shrink-0">
         <div class="flex-shrink-0 group block w-full">
             <div class="flex items-center justify-between">

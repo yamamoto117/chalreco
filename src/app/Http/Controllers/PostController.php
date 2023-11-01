@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -16,31 +15,21 @@ class PostController extends Controller
 
     public function index()
     {
-        $user = Auth::user();
+        $posts = Post::latest()->get();
 
-        $followingPosts = collect();
+        return view('index')
+            ->with(['posts' => $posts]);
+    }
 
-        if ($user) {
-            $followingIds = $user->followings->pluck('id')->toArray();
-
-            $followingIds[] = $user->id;
-
-            $followingPosts = Post::withCount('goods')
-                ->whereIn('user_id', $followingIds)
-                ->orderBy('created_at', 'desc')
-                ->get();
-        }
-
+    public function trending()
+    {
         $posts = Post::withCount('goods')
             ->orderBy('goods_count', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('index')
-            ->with([
-                'posts' => $posts,
-                'followingPosts' => $followingPosts
-            ]);
+        return view('posts.trending')
+            ->with(['posts' => $posts]);
     }
 
     public function show(Post $post)

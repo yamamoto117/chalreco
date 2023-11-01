@@ -3,23 +3,9 @@
         ホーム
     </x-slot>
 
-    @php
-        $tabs = [
-            ['name' => '注目のチャレンジ'],
-        ];
-
-        if (auth()->check()) {
-            $tabs[] = ['name' => 'フォロー中'];
-        }
-    @endphp
-
-    <tabs-component :tabs="{{ json_encode($tabs) }}">
-        <template v-slot:content-0>
-            @include('posts.trending')
-        </template>
-        <template v-slot:content-1>
-            @include('posts.following', ['posts' => $followingPosts])
-        </template>
-    </tabs-component>
+    @foreach ($posts as $post)
+        <x-post-list-card :post="$post" />
+        <hr class="border-gray-200">
+    @endforeach
 
 </x-app-layout>

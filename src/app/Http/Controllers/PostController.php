@@ -82,6 +82,24 @@ class PostController extends Controller
         $post->status = $request->status;
         $post->title = $request->title;
         $post->body = $request->body;
+
+        if ($request->hasFile('image')) {
+            if ($post->image) {
+                $oldImagePath = parse_url($post->image, PHP_URL_PATH);
+                $oldImagePath = ltrim($oldImagePath, '/');
+                Storage::disk('s3')->delete($oldImagePath);
+            }
+            $path = $request->file('image')->store('images', 's3');
+            $post->image = Storage::disk('s3')->url($path);
+        }
+
+        if ($request->filled('delete_image') && $post->image) {
+            $oldImagePath = parse_url($post->image, PHP_URL_PATH);
+            $oldImagePath = ltrim($oldImagePath, '/');
+            Storage::disk('s3')->delete($oldImagePath);
+            $post->image = null;
+        }
+
         $post->save();
 
         return redirect()

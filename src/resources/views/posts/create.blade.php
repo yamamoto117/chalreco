@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="text-gray-700 p-4">
-        <form method="post" action="{{ route('posts.store') }}">
+        <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
             @csrf
 
             @error('title')
@@ -18,6 +18,10 @@
             <div class="mb-4">
                 <p>自由入力欄</p>
                 <textarea class="w-full h-60 border border-gray-300 outline-none" name="body">{{ old('body') }}</textarea>
+            </div>
+            <div class="mb-4">
+                <p>画像</p>
+                <input  class="w-full outline-none" type="file" name="image">
             </div>
             <div>
                 <button class="w-full flex justify-center text-base leading-6 bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-full">投稿する</button>

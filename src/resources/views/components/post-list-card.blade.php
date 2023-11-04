@@ -64,6 +64,7 @@
             <a href="{{ route('posts.show', $post) }}">
                 <p class="container font-semibold">{{ $post->title }}</p>
                 <p class="mt-2">{!! nl2br(e($post->body)) !!}</p>
+                <img src="{{ $post->image }}" class="w-full h-auto" />
             </a>
         </div>
         <div class="flex items-center w-10 h-10 text-gray-400 mt-2 -mb-2">

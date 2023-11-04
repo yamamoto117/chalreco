@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -58,6 +59,12 @@ class PostController extends Controller
     {
         $post->fill($request->all());
         $post->user_id = $request->user()->id;
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 's3');
+            $post->image = Storage::disk('s3')->url($path);
+        }
+
         $post->save();
 
         return redirect()

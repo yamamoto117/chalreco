@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex border-b">
+        <div class="flex border-b sticky top-[60px] bg-white z-10">
             <div v-for="(tab, index) in tabs" :key="index" class="w-full">
                 <button :class="[
                     'w-full py-2 px-4 block hover:bg-gray-50',

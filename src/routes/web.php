@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::get('/', [PostController::class, 'index'])
     ->name('posts.index');
 
-Route::get('/search', [PostController::class, 'search'])
+Route::get('/search', [SearchController::class, 'index'])
     ->name('search.index');
 
 Route::prefix('posts')->name('posts.')->group(function () {

@@ -23,14 +23,16 @@
             </div>
         </form>
     </div>
-
-    @forelse($posts as $post)
-        <div>
-            <x-post-list-card :post="$post" />
-            <hr class="border-gray-200">
-        </div>
-    @empty
-        <hr class="border-gray-200">
-    @endforelse
+    <tabs-component :tabs="[
+        {name: '投稿'},
+        {name: 'ユーザー'}
+    ]">
+        <template v-slot:content-0>
+            @include('search.post-list')
+        </template>
+        <template v-slot:content-1>
+            @include('search.user-list')
+        </template>
+    </tabs-component>
 
 </x-app-layout>

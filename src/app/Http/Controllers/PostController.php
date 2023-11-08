@@ -134,22 +134,4 @@ class PostController extends Controller
             'countGoods' => $post->count_goods,
         ];
     }
-
-    public function search(Request $request)
-    {
-        $keyword = $request->input('keyword');
-
-        $query = Post::query();
-
-        if (empty($keyword)) {
-            return view('search.index', ['posts' => collect(), 'keyword' => '']);
-        }
-
-        $query->where('title', 'LIKE', "%{$keyword}%")
-            ->orWhere('body', 'LIKE', "%{$keyword}%");
-
-        $posts = $query->get();
-
-        return view('search.index', compact('posts', 'keyword'));
-    }
 }

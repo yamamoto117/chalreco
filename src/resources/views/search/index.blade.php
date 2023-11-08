@@ -4,9 +4,8 @@
     </x-slot>
 
     <div class="flex items-center">
-        <x-back />
         <form action="{{ route('search.index') }}" method="GET" class="flex w-full">
-            <div class="flex items-center w-full mr-4">
+            <div class="flex items-center w-full mx-4 my-8">
                 <input type="text" name="keyword" value="{{ $keyword }}" placeholder="キーワードを入力" class="h-10 border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 flex-grow px-2 py-1 rounded-l-md">
                 <button type="submit" class="flex items-center justify-center text-base leading-6 bg-orange-400 hover:bg-orange-500 text-white h-10 w-10 rounded-r-md">
                     <svg class="h-4 w-4" viewBox="0 0 512 512">

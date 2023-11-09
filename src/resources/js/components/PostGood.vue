@@ -1,6 +1,6 @@
 <template>
     <div @mouseover="hovering = true" @mouseleave="hovering = false">
-        <button type="button" class="mr-2 hover:text-orange-400 flex items-center" @click="clickGood">
+        <button type="button" class="mr-1 hover:text-orange-400 flex items-center" @click="clickGood">
             <svg v-if="!isGoodedBy"
                 :class="isGoodedBy || hovering ? 'h-5 w-5 fill-current text-orange-400' : 'h-5 w-5 fill-current text-gray-400'"
                 viewBox="0 0 512 512">
@@ -37,7 +37,7 @@
                 c21.359-1.25,38.328-18.766,38.328-40.406C462.832,315.055,450.191,299.493,433.051,294.727z"></path>
                 </g>
             </svg>
-            <span class="ml-2 text-sm" :class="isGoodedBy || hovering ? 'text-orange-400' : 'text-gray-400'">{{
+            <span class="w-5 text-sm" :class="isGoodedBy || hovering ? 'text-orange-400' : 'text-gray-400'">{{
                 countGoods
             }}</span>
         </button>

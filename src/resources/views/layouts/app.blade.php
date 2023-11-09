@@ -16,7 +16,7 @@
     <title>{{ $title }}  | チャレコ
     </title>
     <link href="/css/app.css" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div>

@@ -74,4 +74,21 @@ class UserController extends Controller
 
         return ['name' => $name];
     }
+
+    public function delete(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        if (!$user) {
+            return redirect()->back()->withErrors(['User not found.']);
+        }
+
+        if ($user->id !== $request->user()->id) {
+            return abort(403, 'Unauthorized action.');
+        }
+
+        $user->delete();
+
+        return redirect('/')->with('status', 'Your account has been successfully deleted.');
+    }
 }

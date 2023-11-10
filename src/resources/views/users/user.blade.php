@@ -13,6 +13,13 @@
             @else
                 <div class="h-11"></div>
             @endif
+            @if(Auth::id() === $user->id)
+                <form action="{{ route('users.delete', ['name' => $user->name]) }}" method="POST" class="ml-auto">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-red-500 border border-red-500 py-2 px-4 rounded-full hover:bg-red-100" onclick="return confirm('アカウントを削除してもよろしいですか？');">アカウント削除</button>
+                </form>
+            @endif
         </div>
         <div class="-mt-32">
             <div class="rounded-full h-36 w-36">

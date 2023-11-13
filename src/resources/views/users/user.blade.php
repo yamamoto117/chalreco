@@ -14,13 +14,16 @@
                 <div class="h-11"></div>
             @endif
             @if(Auth::id() === $user->id)
-                <dropdown-menu class="ml-auto">
-                    <form action="{{ route('users.delete', ['name' => $user->name]) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="text-red-500 py-2 px-4" onclick="return confirm('アカウントを削除してもよろしいですか？');">アカウント削除</button>
-                    </form>
-                </dropdown-menu>
+                <div class="flex items-center ml-auto">
+                    <a href="{{ route('users.edit', ['name' => $user->name]) }}" class="ml-auto text-gray-700 border border-gray-400 py-2 px-4 rounded-full hover:bg-gray-50">プロフィール編集</a>
+                    <dropdown-menu class="ml-3">
+                        <form action="{{ route('users.delete', ['name' => $user->name]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="text-red-500 py-2 px-4" onclick="return confirm('アカウントを削除してもよろしいですか？');">アカウント削除</button>
+                        </form>
+                    </dropdown-menu>
+                </div>
             @endif
         </div>
         <div class="-mt-32">

@@ -75,6 +75,24 @@ class UserController extends Controller
         return ['name' => $name];
     }
 
+    public function edit(string $name)
+    {
+        return view('users.edit')
+            ->with(['name' => $name]);
+    }
+
+    public function update(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->firstOrFail();
+
+        $user->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()
+            ->route('users.show', ['name' => $user->name]);
+    }
+
     public function delete(Request $request, string $name)
     {
         $user = User::where('name', $name)->first();
@@ -89,6 +107,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect('/')->with('status', 'Your account has been successfully deleted.');
+        return redirect('/');
     }
 }

@@ -77,8 +77,8 @@ class UserController extends Controller
 
     public function edit(string $name)
     {
-        return view('users.edit')
-            ->with(['name' => $name]);
+        $user = User::where('name', $name)->firstOrFail();
+        return view('users.edit', compact('user', 'name'));
     }
 
     public function update(Request $request, string $name)
@@ -87,6 +87,7 @@ class UserController extends Controller
 
         $user->update([
             'name' => $request->name,
+            'bio' => $request->bio,
         ]);
 
         return redirect()

@@ -1,6 +1,6 @@
 <div>
     <div class="w-full bg-gray-200 h-48"></div>
-    <div class="p-4">
+    <div class="p-4 break-words">
         <div class="flex items-start">
             @if( Auth::id() !== $user->id )
                 <follow-button
@@ -31,9 +31,12 @@
                 <img class="h-32 w-32 rounded-full border-4 border-white" src="/images/profile-icon.png" alt="icon">
             </div>
         </div>
-        <div class="justify-center w-full mt-3 ml-3">
+        <div class="justify-center w-full mt-3">
             <div class="mb-4">
                 <h2 class="text-xl leading-6 font-bold text-gray-700">{{ $user->name }}</h2>
+            </div>
+            <div class="mb-4">
+                <h2 class="text-gray-700">{{ $user->bio }}</h2>
             </div>
             <div class="flex items-center text-sm text-gray-400">
                 <a href="{{ route('users.followings', ['name' => $user->name]) }}" class="mr-4"><span class="font-semibold">{{ $user->count_followings }}</span> フォロー</a>

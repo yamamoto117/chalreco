@@ -63,6 +63,8 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::put('/{name}/follow', [UserController::class, 'follow'])->name('follow');
         Route::delete('/{name}/follow', [UserController::class, 'unfollow'])->name('unfollow');
+        Route::get('/{name}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::patch('/{name}/update', [UserController::class, 'update'])->name('update');
         Route::delete('/{name}/delete', [UserController::class, 'delete'])->name('delete');
     });
 });

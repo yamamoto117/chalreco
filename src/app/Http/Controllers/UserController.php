@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -77,18 +78,35 @@ class UserController extends Controller
 
     public function edit(string $name)
     {
-        $user = User::where('name', $name)->firstOrFail();
+        $user = User::where('name', $name)->first();
         return view('users.edit', compact('user', 'name'));
     }
 
     public function update(Request $request, string $name)
     {
-        $user = User::where('name', $name)->firstOrFail();
+        $user = User::where('name', $name)->first();
 
-        $user->update([
-            'name' => $request->name,
-            'bio' => $request->bio,
-        ]);
+        $user->name = $request->name;
+        $user->bio = $request->bio;
+
+        if ($request->hasFile('profile_image')) {
+            if ($user->profile_image) {
+                $oldImagePath = parse_url($user->profile_image, PHP_URL_PATH);
+                $oldImagePath = ltrim($oldImagePath, '/');
+                Storage::disk('s3')->delete($oldImagePath);
+            }
+            $path = $request->file('profile_image')->store('profile_images', 's3');
+            $user->profile_image = Storage::disk('s3')->url($path);
+        }
+
+        if ($request->filled('delete_profile_image') && $user->profile_image) {
+            $oldImagePath = parse_url($user->profile_image, PHP_URL_PATH);
+            $oldImagePath = ltrim($oldImagePath, '/');
+            Storage::disk('s3')->delete($oldImagePath);
+            $user->profile_image = null;
+        }
+
+        $user->save();
 
         return redirect()
             ->route('users.show', ['name' => $user->name]);

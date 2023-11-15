@@ -35,7 +35,7 @@
                     <label><input type="checkbox" name="delete_image" value="1">画像を削除する</label>
                 </div>
                 @endif
-                <input  class="w-full outline-none" type="file" name="image">
+                <input class="w-full outline-none" type="file" name="image">
             </div>
             <div>
                 <button class="w-full flex justify-center text-base leading-6 bg-orange-400 mt-5 hover:bg-orange-500 text-white py-2 px-4 rounded-full">上書きする</button>

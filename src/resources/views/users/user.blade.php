@@ -27,8 +27,8 @@
             @endif
         </div>
         <div class="-mt-32">
-            <div class="rounded-full h-36 w-36">
-                <img class="h-32 w-32 rounded-full border-4 border-white" src="/images/profile-icon.png" alt="icon">
+            <div class="h-32 w-32 bg-white overflow-hidden rounded-full border-4 border-white">
+                <img class="w-full h-full" src="{{ $user->profile_image ? $user->profile_image : '/images/profile-icon.png' }}">
             </div>
         </div>
         <div class="justify-center w-full mt-3">

@@ -9,6 +9,18 @@
             @method('PATCH')
             @csrf
             <div>
+                <x-label for="header_image" :value="__('ヘッダー画像')" />
+                @if($user->header_image)
+                <div>
+                    <div class="flex justify-center w-full h-48">
+                        <img src="{{ $user->header_image }}" id=img class="w-full h-full object-cover">
+                    </div>
+                    <label><input type="checkbox" name="delete_header_image" value="1">画像を削除する</label>
+                </div>
+                @endif
+                <input type="file" name="header_image" id="header_image" onchange="previewImage(this);" class="w-full h-auto mb-4">
+            </div>
+            <div>
                 <x-label for="profile_image" :value="__('プロフィール画像')" />
                 @if($user->profile_image)
                 <div>

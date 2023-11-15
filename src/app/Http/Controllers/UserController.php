@@ -106,6 +106,23 @@ class UserController extends Controller
             $user->profile_image = null;
         }
 
+        if ($request->hasFile('header_image')) {
+            if ($user->header_image) {
+                $oldHeaderImagePath = parse_url($user->header_image, PHP_URL_PATH);
+                $oldHeaderImagePath = ltrim($oldHeaderImagePath, '/');
+                Storage::disk('s3')->delete($oldHeaderImagePath);
+            }
+            $headerPath = $request->file('header_image')->store('header_images', 's3');
+            $user->header_image = Storage::disk('s3')->url($headerPath);
+        }
+
+        if ($request->filled('delete_header_image') && $user->header_image) {
+            $oldHeaderImagePath = parse_url($user->header_image, PHP_URL_PATH);
+            $oldHeaderImagePath = ltrim($oldHeaderImagePath, '/');
+            Storage::disk('s3')->delete($oldHeaderImagePath);
+            $user->header_image = null;
+        }
+
         $user->save();
 
         return redirect()

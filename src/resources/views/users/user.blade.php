@@ -1,5 +1,9 @@
 <div>
-    <div class="w-full bg-gray-200 h-48"></div>
+    <div class="{{ $user->header_image ? '' : 'bg-gray-200' }} h-48 w-full">
+        @if($user->header_image)
+        <img class="w-full h-full object-cover" src="{{ $user->header_image }}">
+        @endif
+    </div>
     <div class="p-4 break-words">
         <div class="flex items-start">
             @if( Auth::id() !== $user->id )

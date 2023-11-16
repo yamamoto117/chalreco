@@ -32,7 +32,7 @@
         </div>
         <div class="-mt-32">
             <div class="h-32 w-32 bg-white overflow-hidden rounded-full border-4 border-white">
-                <img class="w-full h-full" src="{{ $user->profile_image ? $user->profile_image : '/images/profile-icon.png' }}">
+                <img class="w-full h-full object-cover" src="{{ $user->profile_image ? $user->profile_image : '/images/profile-icon.png' }}">
             </div>
         </div>
         <div class="justify-center w-full mt-3">

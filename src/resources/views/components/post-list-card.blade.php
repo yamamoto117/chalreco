@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <a href="{{ route('users.show', ['name' => $post->user->name]) }}" class="hover:opacity-80 transition-opacity">
-                        <img class="inline-block h-10 w-10 object-cover rounded-full" src="/images/profile-icon.png" alt="icon" />
+                        <img class="inline-block h-10 w-10 object-cover rounded-full" src="{{ $post->user->profile_image ? $post->user->profile_image : '/images/profile-icon.png' }}" alt="icon" />
                     </a>
                     <div class="ml-2">
                         <div class="text-base leading-6 font-medium text-gray-700">

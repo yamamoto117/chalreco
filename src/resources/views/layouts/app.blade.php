@@ -23,7 +23,11 @@
     <!-- Responsive -->
     <div class="md:hidden flex items-center justify-between bg-white py-2 border-b border-gray-200 relative">
         <a href="#" id="iconMenu" class="absolute left-2 flex items-center">
-            <img class="inline-block h-10 w-10 rounded-full" src="/images/profile-icon.png" alt="icon" />
+            @if (Auth::user())
+                <img class="inline-block h-10 w-10 object-cover rounded-full" src="{{ Auth::user()->profile_image ? Auth::user()->profile_image : '/images/profile-icon.png' }}" alt="icon" />
+            @else
+                <img class="inline-block h-10 w-10 rounded-full" src="/images/profile-icon.png" alt="icon" />
+            @endif
         </a>
         <a href="{{ route('posts.index') }}" class="mx-auto">
             <img src="/images/logo.png" alt="logo" class="logo w-10 h-auto">

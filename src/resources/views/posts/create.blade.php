@@ -12,23 +12,23 @@
             @enderror
 
             <div class="mb-4">
-                <p>チャレンジ名 <span class="text-red-500">(必須)</span></p>
-                <input class="w-full border border-gray-300 outline-none" type="text" name="title" value="{{ old('title') }}">
+                <label class="flex items-center" for="title">チャレンジ名<span class="text-white text-xs bg-red-500 rounded py-0.5 px-1 ml-1">必須</span></label>
+                <input id="title" class="w-full border border-gray-300 outline-none rounded focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" type="text" name="title" value="{{ old('title') }}" placeholder="チャレンジのタイトルを入力してください">
             </div>
             <div class="mb-4">
-                <p>自由入力欄</p>
-                <textarea class="w-full h-60 border border-gray-300 outline-none" name="body">{{ old('body') }}</textarea>
+                <label for="body">フリースペース</label>
+                <textarea id="body" class="w-full h-60 border border-gray-300 outline-none rounded focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" name="body" placeholder="チャレンジの詳細内容などを自由に入力できます">{{ old('body') }}</textarea>
             </div>
             <div class="mb-4">
-                <p>画像</p>
-                <input  class="w-full outline-none" type="file" name="image">
+                <label for="image">画像</label>
+                <image-preview></image-preview>
             </div>
             <div>
-                <button class="w-full flex justify-center text-base leading-6 bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-full">投稿する</button>
+                <button class="w-full flex justify-center text-base leading-6 bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded-full">投稿する</button>
             </div>
         </form>
         <div>
-            <a href="{{ route('posts.index') }}" class="flex justify-center text-base leading-6 border border-gray-600 bg-white mt-3 hover:bg-gray-100 text-gray-600 py-2 px-4 rounded-full">キャンセル</a>
+            <a href="{{ route('posts.index') }}" class="flex justify-center text-base leading-6 border border-gray-600 bg-white hover:bg-gray-100 text-gray-600 py-2 px-4 rounded-full mt-3">キャンセル</a>
         </div>
     </div>
     <hr class="border-gray-200">

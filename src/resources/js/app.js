@@ -43,5 +43,15 @@ const app = new Vue({
         DropdownMenu,
         TabsComponent,
         ImagePreview,
-    }
+    },
+    data() {
+        return {
+            deleteImageFlag: false,
+        };
+    },
+    methods: {
+        handleImageRemoval() {
+            this.deleteImageFlag = true;
+        },
+    },
 })

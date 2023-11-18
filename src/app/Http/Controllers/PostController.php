@@ -83,6 +83,13 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
 
+        if ($request->input('delete_image') === 'true') {
+            $oldImagePath = parse_url($post->image, PHP_URL_PATH);
+            $oldImagePath = ltrim($oldImagePath, '/');
+            Storage::disk('s3')->delete($oldImagePath);
+            $post->image = null;
+        }
+
         if ($request->hasFile('image')) {
             if ($post->image) {
                 $oldImagePath = parse_url($post->image, PHP_URL_PATH);
@@ -91,13 +98,6 @@ class PostController extends Controller
             }
             $path = $request->file('image')->store('images', 's3');
             $post->image = Storage::disk('s3')->url($path);
-        }
-
-        if ($request->filled('delete_image') && $post->image) {
-            $oldImagePath = parse_url($post->image, PHP_URL_PATH);
-            $oldImagePath = ltrim($oldImagePath, '/');
-            Storage::disk('s3')->delete($oldImagePath);
-            $post->image = null;
         }
 
         $post->save();

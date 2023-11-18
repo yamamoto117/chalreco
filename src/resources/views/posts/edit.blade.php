@@ -43,5 +43,4 @@
             </div>
     </div>
     <hr class="border-gray-200">
-
 </x-app-layout>

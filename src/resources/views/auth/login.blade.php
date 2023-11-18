@@ -13,12 +13,12 @@
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('メールアドレス')" />
-                <x-input id="email" class="w-full border border-gray-300 p-2 mb-4 outline-none" type="email" name="email" :value="old('email')" autofocus />
+                <x-input id="email" class="w-full border border-gray-300 p-2 mb-4 outline-none rounded" type="email" name="email" :value="old('email')" autofocus />
             </div>
             <!-- Password -->
             <div>
                 <x-label for="password" :value="__('パスワード')" />
-                <x-input id="password" class="w-full border border-gray-300 p-2 mb-4 outline-none"
+                <x-input id="password" class="w-full border border-gray-300 p-2 mb-4 outline-none rounded"
                                 type="password"
                                 name="password"
                                 autocomplete="current-password" />

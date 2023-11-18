@@ -13,7 +13,7 @@
 
             <div class="mb-4">
                 <label for="title" class="flex items-center">チャレンジ名<span class="text-white text-xs bg-red-500 rounded py-0.5 px-1 ml-1">必須</span></label>
-                <input id="title" class="w-full border border-gray-300 outline-none rounded focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" type="text" name="title" value="{{ old('title') }}" placeholder="チャレンジのタイトルを入力してください">
+                <input id="title" class="w-full border border-gray-300 outline-none rounded focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" type="text" name="title" value="{{ old('title') }}" placeholder="チャレンジのタイトルを入力してください" autofocus>
             </div>
             <div class="mb-4">
                 <label for="body">フリースペース</label>
@@ -32,5 +32,4 @@
         </div>
     </div>
     <hr class="border-gray-200">
-
 </x-app-layout>

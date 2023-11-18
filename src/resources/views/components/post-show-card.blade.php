@@ -33,7 +33,7 @@
         <div class="flex-shrink">
             <p class="container font-semibold">{{ $post->title }}</p>
             <p class="mt-2">{!! nl2br(e($post->body)) !!}</p>
-            <img src="{{ $post->image }}" class="w-full h-auto" />
+            <img src="{{ $post->image }}" class="w-full h-auto rounded" />
             <div class="flex items-center mt-6">
                 <p class="mr-1 text-sm text-gray-400">{{ $post->created_at->format('Y/m/d H:i') }}</p>
                 @if($post->status == 'in_progress')

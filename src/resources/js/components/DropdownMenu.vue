@@ -10,8 +10,9 @@
             </svg>
         </div>
 
-        <div v-if="open" class="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+        <div v-if="open"
+            class="absolute top-6 right-0 w-auto border border-gray-200 rounded shadow-lg bg-white z-10 whitespace-nowrap">
+            <div role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <slot></slot>
             </div>
         </div>
@@ -23,6 +24,19 @@ export default {
     data() {
         return {
             open: false
+        }
+    },
+    mounted() {
+        document.addEventListener('click', this.handleOutsideClick);
+    },
+    beforeDestroy() {
+        document.removeEventListener('click', this.handleOutsideClick);
+    },
+    methods: {
+        handleOutsideClick(event) {
+            if (!this.$el.contains(event.target)) {
+                this.open = false;
+            }
         }
     }
 }

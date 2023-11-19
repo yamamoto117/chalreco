@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <a href="{{ route('users.show', ['name' => $post->user->name]) }}" class="hover:opacity-80 transition-opacity">
-                        <img class="inline-block h-10 w-10 object-cover rounded-full" src="{{ $post->user->profile_image ? $post->user->profile_image : '/images/profile-icon.png' }}" alt="icon" />
+                        <img class="inline-block h-10 w-10 object-cover rounded-full" src="{{ $post->user->profile_image ? $post->user->profile_image : '/images/profile-icon.png' }}" alt="profile-image" />
                     </a>
                     <div class="ml-2">
                         <div class="text-base leading-6 font-medium text-gray-700">
@@ -44,17 +44,17 @@
                         </svg>
                     @endif
                 </div>
-                <div class="flex items-center">
-                    @if( Auth::id() === $post->user_id )
-                        <dropdown-menu>
-                            <a href="{{ route('posts.edit', $post) }}" class="block px-4 py-2 text-sm text-gray-700">編集</a>
-                            <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post" class="block">
-                                @method('DELETE')
-                                @csrf
-                                <button class="block px-4 py-2 text-sm text-red-500">削除</button>
-                            </form>
-                        </dropdown-menu>
-                    @endif
+                <div>
+                @if( Auth::id() === $post->user_id )
+                    <dropdown-menu>
+                        <a href="{{ route('posts.edit', $post) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">編集</a>
+                        <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post" class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100">
+                            @method('DELETE')
+                            @csrf
+                            <button>削除</button>
+                        </form>
+                    </dropdown-menu>
+                @endif
                 </div>
             </div>
         </div>
@@ -63,8 +63,12 @@
         <div class="flex-shrink">
             <a href="{{ route('posts.show', $post) }}">
                 <p class="container font-semibold">{{ $post->title }}</p>
-                <p class="mt-2">{!! nl2br(e($post->body)) !!}</p>
-                <img src="{{ $post->image }}" class="w-full h-auto rounded" />
+                @if($post->image)
+                    <img src="{{ $post->image }}" class="w-full h-auto rounded mt-1" />
+                @endif
+                @if($post->body)
+                    <p class="mt-1">{!! nl2br(e($post->body)) !!}</p>
+                @endif
             </a>
         </div>
         <div class="flex items-center w-10 h-10 text-gray-400 mt-2 -mb-2">

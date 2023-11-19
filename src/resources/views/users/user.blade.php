@@ -1,5 +1,5 @@
 <div>
-    <div class="{{ $user->header_image ? '' : 'bg-gray-200' }} h-48 w-full">
+    <div class="{{ $user->header_image ? '' : 'bg-gray-200' }} h-48 w-full relative -z-10">
         @if($user->header_image)
         <img class="w-full h-full object-cover" src="{{ $user->header_image }}">
         @endif
@@ -21,10 +21,20 @@
                 <div class="flex items-center ml-auto">
                     <a href="{{ route('users.edit', ['name' => $user->name]) }}" class="ml-auto text-gray-700 border border-gray-400 py-2 px-4 rounded-full hover:bg-gray-50">プロフィール編集</a>
                     <dropdown-menu class="ml-3">
-                        <form action="{{ route('users.delete', ['name' => $user->name]) }}" method="POST">
+                        <form method="post" action="{{ route('users.delete', ['name' => $user->name]) }}" class="flex items-center block px-4 py-2 text-sm text-red-500 font-semibold hover:bg-gray-100">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="text-red-500 py-2 px-4" onclick="return confirm('アカウントを削除してもよろしいですか？');">アカウント削除</button>
+                            <svg class="h-4 w-4" viewBox="0 0 512 512">
+                                <g>
+                                    <path fill="currentColor" d="M255.988,282.537c78.002,0,141.224-63.221,141.224-141.213c0-77.982-63.222-141.213-141.224-141.213
+                                        c-77.99,0-141.203,63.23-141.203,141.213C114.785,219.316,177.998,282.537,255.988,282.537z"></path>
+                                    <path fill="currentColor" d="M503.748,468.222C473.826,376.236,364.008,326.139,256,326.139c-108.02,0-217.828,50.098-247.75,142.084
+                                        c-4.805,14.74-7.428,29.387-8.25,43.666h512C511.166,497.609,508.553,482.963,503.748,468.222z"></path>
+                                </g>
+                            </svg>
+                            <button type="submit" class="ml-3" onclick="return confirm('このアカウントを削除してもよろしいですか？');">
+                                アカウント削除
+                            </button>
                         </form>
                     </dropdown-menu>
                 </div>

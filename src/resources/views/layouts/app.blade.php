@@ -19,35 +19,52 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<div>
+<div id="app">
     <!-- Responsive -->
-    <div class="md:hidden flex items-center justify-between bg-white py-2 border-b border-gray-200 relative">
-        <a href="#" id="iconMenu" class="absolute left-2 flex items-center">
-            @if (Auth::user())
-                <img class="inline-block h-10 w-10 object-cover rounded-full" src="{{ Auth::user()->profile_image ? Auth::user()->profile_image : '/images/profile-icon.png' }}" alt="icon" />
-            @else
-                <img class="inline-block h-10 w-10 rounded-full" src="/images/profile-icon.png" alt="icon" />
-            @endif
+    <div class="md:hidden flex justify-center items-center bg-white py-2 border-b border-gray-200 relative">
+        <auth-dropdown-menu :user="{{ Auth::user() ? Auth::user()->toJson() : 'null' }}" class="absolute left-2">
+            @guest
+            <a href="{{ route('login') }}" class="flex items-center block px-4 py-2 text-sm text-gray-500 font-semibold hover:bg-gray-100">
+                <svg class="h-4 w-4" viewBox="0 0 512 512">
+                    <g>
+                        <path fill="currentColor" d="M255.988,282.537c78.002,0,141.224-63.221,141.224-141.213c0-77.982-63.222-141.213-141.224-141.213
+                            c-77.99,0-141.203,63.23-141.203,141.213C114.785,219.316,177.998,282.537,255.988,282.537z"></path>
+                        <path fill="currentColor" d="M503.748,468.222C473.826,376.236,364.008,326.139,256,326.139c-108.02,0-217.828,50.098-247.75,142.084
+                            c-4.805,14.74-7.428,29.387-8.25,43.666h512C511.166,497.609,508.553,482.963,503.748,468.222z"></path>
+                    </g>
+                </svg>
+                <span class="ml-3">ログイン / 新規登録</span>
+            </a>
+            <a href="{{ route('login.guest') }}" class="flex items-center block px-4 py-2 text-sm text-gray-500 font-semibold hover:bg-gray-100">
+                <svg class="h-4 w-4" viewBox="0 0 512 512">
+                    <g>
+                        <path fill="currentColor" d="M255.988,282.537c78.002,0,141.224-63.221,141.224-141.213c0-77.982-63.222-141.213-141.224-141.213
+                            c-77.99,0-141.203,63.23-141.203,141.213C114.785,219.316,177.998,282.537,255.988,282.537z"></path>
+                        <path fill="currentColor" d="M503.748,468.222C473.826,376.236,364.008,326.139,256,326.139c-108.02,0-217.828,50.098-247.75,142.084
+                            c-4.805,14.74-7.428,29.387-8.25,43.666h512C511.166,497.609,508.553,482.963,503.748,468.222z"></path>
+                    </g>
+                </svg>
+                <span class="ml-3" onclick="return confirm('ゲストユーザーとしてログインしますか？');">ゲストログイン</span>
+            </a>
+            @endguest
+            @auth
+            <form method="post" action="{{ route('logout') }}" class="flex items-center block px-4 py-2 text-sm text-red-500 font-semibold hover:bg-gray-100">
+                @csrf
+                <svg class="h-4 w-4" viewBox="0 0 512 512">
+                    <g>
+                        <path fill="currentColor" d="M255.988,282.537c78.002,0,141.224-63.221,141.224-141.213c0-77.982-63.222-141.213-141.224-141.213
+                            c-77.99,0-141.203,63.23-141.203,141.213C114.785,219.316,177.998,282.537,255.988,282.537z"></path>
+                        <path fill="currentColor" d="M503.748,468.222C473.826,376.236,364.008,326.139,256,326.139c-108.02,0-217.828,50.098-247.75,142.084
+                            c-4.805,14.74-7.428,29.387-8.25,43.666h512C511.166,497.609,508.553,482.963,503.748,468.222z"></path>
+                    </g>
+                </svg>
+                <button type="submit" class="ml-3" onclick="return confirm('ログアウトしてもよろしいですか？');">ログアウト</button>
+            </form>
+            @endauth
+        </auth-dropdown-menu>
+        <a href="{{ route('posts.index') }}" class="flex items-center">
+            <img src="/images/logo.png" alt="logo" class="w-10 h-auto">
         </a>
-        <a href="{{ route('posts.index') }}" class="mx-auto">
-            <img src="/images/logo.png" alt="logo" class="logo w-10 h-auto">
-        </a>
-        <div id="menuDropdown" class="absolute left-2 mt-2 rounded-md hidden">
-            <div class="rounded-md bg-white shadow-xs">
-                @guest
-                <div>
-                    <a href="{{ route('login') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100">ログイン / 新規登録</a>
-                    <a href="{{ route('login.guest') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100">ゲストログイン</a>
-                </div>
-                @endguest
-                @auth
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100">ログアウト</button>
-                </form>
-                @endauth
-            </div>
-        </div>
     </div>
     <div class="flex justify-center">
         <aside class="flex justify-end hidden md:block md:w-1/4 p-4 overflow-y-auto h-screen sticky top-0">
@@ -129,7 +146,7 @@
             </div>
         </aside>
         <main class="w-full md:w-1/3 md:min-w-[410px]">
-            <section class="border border-y-0 border-gray-200" id="app">
+            <section class="border border-y-0 border-gray-200">
                 <div class="flex sticky top-0 bg-white z-20">
                     <div class="flex-1">
                         <h2 class="px-6 py-4 text-xl font-semibold text-gray-700">{{ $title }}</h2>
@@ -138,7 +155,6 @@
                 </div>
                 {{ $slot }}
             </section>
-            <script src="{{ mix('js/app.js') }}"></script>
             <div class="h-12 md:hidden"></div>
         </main>
         <aside class="hidden md:block md:w-1/4 md:min-w-[250px] pt-4 text-gray-700 flex flex-col items-center h-screen sticky top-0">
@@ -147,14 +163,14 @@
                 <div class="flex justify-start">
                     <div class="flex flex-col justify-start">
                             <a href="{{ route('login') }}" class="flex items-center justify-center border-solid border-2 border-orange-400 font-semibold rounded h-10 w-52">ログイン / 新規登録</a>
-                            <a href="{{ route('login.guest') }}" class="flex items-center justify-center border-solid border-2 border-gray-400 font-semibold rounded h-10 w-52 mt-2">ゲストログイン</a>
+                            <a href="{{ route('login.guest') }}" class="flex items-center justify-center border-solid border-2 border-gray-400 font-semibold rounded h-10 w-52 mt-2" onclick="return confirm('ゲストユーザーとしてログインしますか？');">ゲストログイン</a>
                     </div>
                 </div>
                 @endguest
                 @auth
                 <form method="POST" action="{{ route('logout') }}" class="flex justify-start">
                     @csrf
-                    <button type="submit" class="border-solid border-2 border-orange-400 font-semibold rounded h-10 w-52">ログアウト</button>
+                    <button type="submit" class="border-solid border-2 border-orange-400 font-semibold rounded h-10 w-52" onclick="return confirm('ログアウトしてもよろしいですか？');">ログアウト</button>
                 </form>
                 @endauth
             </div>
@@ -219,17 +235,6 @@
         </svg>
     </a>
 </div>
-<!-- Responsive -->
-<script>
-    document.getElementById('iconMenu').addEventListener('click', function(e) {
-        e.preventDefault();
-        let dropdown = document.getElementById('menuDropdown');
-        if (dropdown.classList.contains('hidden')) {
-            dropdown.classList.remove('hidden');
-        } else {
-            dropdown.classList.add('hidden');
-        }
-    });
-</script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

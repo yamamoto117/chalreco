@@ -39,7 +39,7 @@
         <hr class="border-gray-200 my-4">
         <div>
             <p>お試しの方はこちら</p>
-            <a href="{{ route('login.guest') }}" class="flex justify-center text-base leading-6 border border-gray-400 bg-gray-400 mt-3 hover:bg-gray-500 text-white py-2 px-4 rounded-full">
+            <a href="{{ route('login.guest') }}" class="flex justify-center text-base leading-6 border border-gray-400 bg-gray-400 mt-3 hover:bg-gray-500 text-white py-2 px-4 rounded-full" onclick="return confirm('ゲストユーザーとしてログインしますか？');">
                 {{ __('ゲストログイン') }}
             </a>
         </div>

@@ -6,7 +6,7 @@
         </div>
 
         <div v-if="open"
-            class="absolute top-10 left-0 w-auto border border-gray-200 rounded shadow-lg bg-white z-30 whitespace-nowrap">
+            class="absolute top-11 left-0 w-auto border border-gray-200 rounded shadow-lg bg-white z-30 whitespace-nowrap">
             <div role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <slot></slot>
             </div>

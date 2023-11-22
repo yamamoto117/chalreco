@@ -108,6 +108,12 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        if ($post->image) {
+            $imagePath = parse_url($post->image, PHP_URL_PATH);
+            $imagePath = ltrim($imagePath, '/');
+            Storage::disk('s3')->delete($imagePath);
+        }
+
         $post->delete();
 
         return redirect()

@@ -34,6 +34,8 @@ import FollowButton from './components/FollowButton'
 import DropdownMenu from './components/DropdownMenu'
 import TabsComponent from './components/TabsComponent'
 import ImagePreview from './components/ImagePreview'
+import HeaderImagePreview from './components/HeaderImagePreview'
+import ProfileImagePreview from './components/ProfileImagePreview'
 import AuthDropdownMenu from './components/AuthDropdownMenu'
 
 const app = new Vue({
@@ -44,6 +46,8 @@ const app = new Vue({
         DropdownMenu,
         TabsComponent,
         ImagePreview,
+        HeaderImagePreview,
+        ProfileImagePreview,
         AuthDropdownMenu,
     },
     data() {

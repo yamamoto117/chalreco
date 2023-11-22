@@ -89,21 +89,11 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->bio = $request->bio;
 
-        if ($request->hasFile('profile_image')) {
-            if ($user->profile_image) {
-                $oldImagePath = parse_url($user->profile_image, PHP_URL_PATH);
-                $oldImagePath = ltrim($oldImagePath, '/');
-                Storage::disk('s3')->delete($oldImagePath);
-            }
-            $path = $request->file('profile_image')->store('profile_images', 's3');
-            $user->profile_image = Storage::disk('s3')->url($path);
-        }
-
-        if ($request->filled('delete_profile_image') && $user->profile_image) {
-            $oldImagePath = parse_url($user->profile_image, PHP_URL_PATH);
-            $oldImagePath = ltrim($oldImagePath, '/');
-            Storage::disk('s3')->delete($oldImagePath);
-            $user->profile_image = null;
+        if ($request->input('delete_header_image') === 'true') {
+            $oldHeaderImagePath = parse_url($user->header_image, PHP_URL_PATH);
+            $oldHeaderImagePath = ltrim($oldHeaderImagePath, '/');
+            Storage::disk('s3')->delete($oldHeaderImagePath);
+            $user->header_image = null;
         }
 
         if ($request->hasFile('header_image')) {
@@ -116,11 +106,21 @@ class UserController extends Controller
             $user->header_image = Storage::disk('s3')->url($headerPath);
         }
 
-        if ($request->filled('delete_header_image') && $user->header_image) {
-            $oldHeaderImagePath = parse_url($user->header_image, PHP_URL_PATH);
-            $oldHeaderImagePath = ltrim($oldHeaderImagePath, '/');
-            Storage::disk('s3')->delete($oldHeaderImagePath);
-            $user->header_image = null;
+        if ($request->input('delete_profile_image') === 'true') {
+            $oldImagePath = parse_url($user->profile_image, PHP_URL_PATH);
+            $oldImagePath = ltrim($oldImagePath, '/');
+            Storage::disk('s3')->delete($oldImagePath);
+            $user->profile_image = null;
+        }
+
+        if ($request->hasFile('profile_image')) {
+            if ($user->profile_image) {
+                $oldImagePath = parse_url($user->profile_image, PHP_URL_PATH);
+                $oldImagePath = ltrim($oldImagePath, '/');
+                Storage::disk('s3')->delete($oldImagePath);
+            }
+            $path = $request->file('profile_image')->store('profile_images', 's3');
+            $user->profile_image = Storage::disk('s3')->url($path);
         }
 
         $user->save();

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-if="existingImage" class="relative">
-            <img :src="existingImage" class="w-full h-auto rounded">
+        <div v-if="existingImage" class="w-full h-48 relative">
+            <img :src="existingImage" class="w-full h-full object-cover rounded">
             <button @click="removeExistingImage" class="absolute top-1 right-1">
                 <svg class="h-6 w-6 text-gray-400" viewBox="0 0 512 512">
                     <g>
@@ -14,8 +14,8 @@
             </button>
         </div>
 
-        <div v-if="imagePreview" class="relative">
-            <img :src="imagePreview" class="w-full h-auto rounded">
+        <div v-if="imagePreview" class="w-full h-48 relative">
+            <img :src="imagePreview" class="w-full h-full object-cover rounded">
             <button @click="removeImage" class="absolute top-1 right-1">
                 <svg class="h-6 w-6 text-gray-400" viewBox="0 0 512 512">
                     <g>
@@ -28,19 +28,19 @@
             </button>
         </div>
 
-        <input v-bind:class="{ hidden: existingImage || imagePreview }" ref="imageInput" id="image" class="w-full"
-            type="file" name="image" @change="previewImage">
+        <input v-bind:class="{ hidden: existingImage || imagePreview }" ref="imageInput" id="header_image" class="w-full"
+            type="file" name="header_image" @change="previewImage">
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        post: Object,
+        user: Object,
     },
     data() {
         return {
-            existingImage: this.post ? this.post.image : null,
+            existingImage: this.user ? this.user.header_image : null,
             imagePreview: null,
             deleteImageFlag: false,
         };

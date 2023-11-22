@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="flex justify-center">
         <div v-if="existingImage" class="relative">
-            <img :src="existingImage" class="w-full h-auto rounded">
-            <button @click="removeExistingImage" class="absolute top-1 right-1">
+            <img :src="existingImage" class="w-32 h-32 rounded-full">
+            <button @click="removeExistingImage" class="absolute top-0 right-0">
                 <svg class="h-6 w-6 text-gray-400" viewBox="0 0 512 512">
                     <g>
                         <path fill="currentColor" d="M255.998,0.002C114.616,0.002,0,114.622,0,256.004c0,141.382,114.616,255.994,255.998,255.994
@@ -15,8 +15,8 @@
         </div>
 
         <div v-if="imagePreview" class="relative">
-            <img :src="imagePreview" class="w-full h-auto rounded">
-            <button @click="removeImage" class="absolute top-1 right-1">
+            <img :src="imagePreview" class="w-32 h-32 rounded-full">
+            <button @click="removeImage" class="absolute top-0 right-0">
                 <svg class="h-6 w-6 text-gray-400" viewBox="0 0 512 512">
                     <g>
                         <path fill="currentColor" d="M255.998,0.002C114.616,0.002,0,114.622,0,256.004c0,141.382,114.616,255.994,255.998,255.994
@@ -28,19 +28,19 @@
             </button>
         </div>
 
-        <input v-bind:class="{ hidden: existingImage || imagePreview }" ref="imageInput" id="image" class="w-full"
-            type="file" name="image" @change="previewImage">
+        <input v-bind:class="{ hidden: existingImage || imagePreview }" ref="imageInput" id="profile_image" class="w-full"
+            type="file" name="profile_image" @change="previewImage">
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        post: Object,
+        user: Object,
     },
     data() {
         return {
-            existingImage: this.post ? this.post.image : null,
+            existingImage: this.user ? this.user.profile_image : null,
             imagePreview: null,
             deleteImageFlag: false,
         };

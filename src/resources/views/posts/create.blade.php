@@ -23,7 +23,7 @@
                 <label for="image">画像</label>
                 <image-preview></image-preview>
             </div>
-            <div>
+            <div class="pt-2">
                 <button class="w-full flex justify-center text-base leading-6 bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded-full">投稿する</button>
             </div>
         </form>

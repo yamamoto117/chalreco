@@ -177,7 +177,7 @@
         </aside>
     </div>
     <!-- Bottom bar -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border">
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border z-20">
         <div class="max-w-screen-md mx-auto flex justify-around items-center py-3">
             <a href="{{ route('posts.index')}}" class="flex flex-col items-center justify-center">
                 <svg class="h-6 w-6 lg:mr-4 md:mr-0" viewBox="0 0 512 512">
@@ -217,7 +217,7 @@
     </div>
 </div>
 <!-- Responsive -->
-<div class="fixed bottom-16 right-4 md:hidden">
+<div class="fixed bottom-16 right-4 md:hidden z-20">
     <a href="{{ route('posts.create') }}" class="flex justify-center items-center bg-orange-400 p-3 rounded-full hover:bg-orange-500">
         <svg class="h-6 w-6 ml-0.5 -mr-0.5 mb-0.5 -mt-0.5" viewBox="0 0 512 512">
             <g>

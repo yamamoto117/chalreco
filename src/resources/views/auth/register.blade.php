@@ -35,7 +35,7 @@
                                 name="password_confirmation" />
             </div>
             <div>
-                <x-button onclick="return confirm('この内容で登録してよろしいですか？');">
+                <x-button onclick="return confirm('この内容で登録してもよろしいですか？');">
                     {{ __('ユーザー登録') }}
                 </x-button>
             </div>

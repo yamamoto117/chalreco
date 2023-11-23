@@ -31,7 +31,7 @@
             </div>
         </form>
             <div>
-                <a href="{{ route('users.show', $name) }}" class="flex justify-center text-base leading-6 border border-gray-600 bg-white mt-3 hover:bg-gray-100 text-gray-600 py-2 px-4 rounded-full">キャンセル</a>
+                <a href="{{ route('users.show', $name) }}" onclick="return confirm('キャンセルしてもよろしいですか？');" class="flex justify-center text-base leading-6 border border-gray-600 bg-white mt-3 hover:bg-gray-100 text-gray-600 py-2 px-4 rounded-full">キャンセル</a>
             </div>
     </div>
     <hr class="border-gray-200">

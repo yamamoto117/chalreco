@@ -17,7 +17,7 @@
             @else
                 <div class="h-11"></div>
             @endif
-            @if(Auth::id() === $user->id)
+            @if(Auth::id() === $user->id && Auth::id() !== 1)
                 <div class="flex items-center ml-auto">
                     <a href="{{ route('users.edit', ['name' => $user->name]) }}" class="ml-auto text-gray-700 border border-gray-400 px-4 py-2 rounded-full hover:bg-gray-50">プロフィール編集</a>
                     <dropdown-menu class="ml-3">

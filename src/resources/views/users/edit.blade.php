@@ -24,7 +24,7 @@
             </div>
             <div class="mb-4">
                 <x-label for="bio" :value="__('自己紹介')" />
-                <textarea name="bio" class="w-full border border-gray-300 p-2 outline-none">{{ old('bio', $user->bio) }}</textarea>
+                <textarea name="bio" class="w-full border border-gray-300 p-2 outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">{{ old('bio', $user->bio) }}</textarea>
             </div>
             <div>
                 <button class="w-full flex justify-center text-base leading-6 bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-full">更新する</button>

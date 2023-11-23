@@ -137,6 +137,10 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['User not found.']);
         }
 
+        if ($user->id === 1) {
+            return abort(403, 'Unauthorized action. Guest user account cannot be deleted.');
+        }
+
         if ($user->id !== $request->user()->id) {
             return abort(403, 'Unauthorized action.');
         }

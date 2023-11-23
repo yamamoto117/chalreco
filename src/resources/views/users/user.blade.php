@@ -21,7 +21,7 @@
                 <div class="flex items-center ml-auto">
                     <a href="{{ route('users.edit', ['name' => $user->name]) }}" class="ml-auto text-gray-700 border border-gray-400 px-4 py-2 rounded-full hover:bg-gray-50">プロフィール編集</a>
                     <dropdown-menu class="ml-3">
-                        <form method="post" action="{{ route('users.delete', ['name' => $user->name]) }}" class="flex items-center block px-4 py-2 text-sm text-red-500 font-semibold hover:bg-gray-100">
+                        <form method="post" action="{{ route('users.destroy', ['name' => $user->name]) }}" class="flex items-center block px-4 py-2 text-sm text-red-500 font-semibold hover:bg-gray-100">
                             @method('DELETE')
                             @csrf
                             <svg class="h-4 w-4" viewBox="0 0 512 512">

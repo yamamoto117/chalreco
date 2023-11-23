@@ -129,7 +129,7 @@ class UserController extends Controller
             ->route('users.show', ['name' => $user->name]);
     }
 
-    public function delete(Request $request, string $name)
+    public function destroy(Request $request, string $name)
     {
         $user = User::where('name', $name)->first();
 
@@ -139,6 +139,18 @@ class UserController extends Controller
 
         if ($user->id !== $request->user()->id) {
             return abort(403, 'Unauthorized action.');
+        }
+
+        if ($user->header_image) {
+            $headerImagePath = parse_url($user->header_image, PHP_URL_PATH);
+            $headerImagePath = ltrim($headerImagePath, '/');
+            Storage::disk('s3')->delete($headerImagePath);
+        }
+
+        if ($user->profile_image) {
+            $profileImagePath = parse_url($user->profile_image, PHP_URL_PATH);
+            $profileImagePath = ltrim($profileImagePath, '/');
+            Storage::disk('s3')->delete($profileImagePath);
         }
 
         $user->delete();

@@ -39,7 +39,7 @@
             </div>
         </form>
             <div>
-                <a href="{{ route('posts.show', $post) }}" class="flex justify-center text-base leading-6 border border-gray-600 bg-white hover:bg-gray-100 text-gray-600 px-4 py-2 rounded-full mt-3">キャンセル</a>
+                <a href="{{ route('posts.show', $post) }}" onclick="return confirm('キャンセルしてもよろしいですか？');" class="flex justify-center text-base leading-6 border border-gray-600 bg-white hover:bg-gray-100 text-gray-600 px-4 py-2 rounded-full mt-3">キャンセル</a>
             </div>
     </div>
     <hr class="border-gray-200">

@@ -153,6 +153,14 @@ class UserController extends Controller
             Storage::disk('s3')->delete($profileImagePath);
         }
 
+        foreach ($user->posts as $post) {
+            if ($post->image) {
+                $postImagePath = parse_url($post->image, PHP_URL_PATH);
+                $postImagePath = ltrim($postImagePath, '/');
+                Storage::disk('s3')->delete($postImagePath);
+            }
+        }
+
         $user->delete();
 
         return redirect('/');

@@ -37,6 +37,7 @@ import ImagePreview from './components/ImagePreview'
 import HeaderImagePreview from './components/HeaderImagePreview'
 import ProfileImagePreview from './components/ProfileImagePreview'
 import AuthDropdownMenu from './components/AuthDropdownMenu'
+import AuthResponsiveDropdownMenu from './components/AuthResponsiveDropdownMenu'
 
 const app = new Vue({
     el: '#app',
@@ -49,6 +50,7 @@ const app = new Vue({
         HeaderImagePreview,
         ProfileImagePreview,
         AuthDropdownMenu,
+        AuthResponsiveDropdownMenu,
     },
     data() {
         return {

@@ -42,7 +42,7 @@ export default {
         return {
             existingImage: this.user ? this.user.profile_image : null,
             imagePreview: null,
-            deleteImageFlag: false,
+            deleteProfileImageFlag: false,
         };
     },
     methods: {

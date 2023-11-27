@@ -10,13 +10,13 @@
             @csrf
             <div class="mb-4">
                 <label for="header_image">ヘッダー画像</label>
-                <header-image-preview :user="{{ json_encode($user) }}" @image-removed="handleImageRemoval"></header-image-preview>
-                <input type="hidden" name="delete_header_image" :value="deleteImageFlag ? 'true' : 'false'">
+                <header-image-preview :user="{{ json_encode($user) }}" @image-removed="handleHeaderImageRemoval"></header-image-preview>
+                <input type="hidden" name="delete_header_image" :value="deleteHeaderImageFlag ? 'true' : 'false'">
             </div>
             <div class="mb-4">
                 <label for="profile_image">プロフィール画像</label>
-                <profile-image-preview :user="{{ json_encode($user) }}" @image-removed="handleImageRemoval"></profile-image-preview>
-                <input type="hidden" name="delete_profile_image" :value="deleteImageFlag ? 'true' : 'false'">
+                <profile-image-preview :user="{{ json_encode($user) }}" @image-removed="handleProfileImageRemoval"></profile-image-preview>
+                <input type="hidden" name="delete_profile_image" :value="deleteProfileImageFlag ? 'true' : 'false'">
             </div>
             <div class="mb-4">
                 <x-label for="name" :value="__('ユーザー名')" />

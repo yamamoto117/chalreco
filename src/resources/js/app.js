@@ -55,11 +55,19 @@ const app = new Vue({
     data() {
         return {
             deleteImageFlag: false,
+            deleteHeaderImageFlag: false,
+            deleteProfileImageFlag: false,
         };
     },
     methods: {
         handleImageRemoval() {
             this.deleteImageFlag = true;
+        },
+        handleHeaderImageRemoval() {
+            this.deleteHeaderImageFlag = true;
+        },
+        handleProfileImageRemoval() {
+            this.deleteProfileImageFlag = true;
         },
     },
 })

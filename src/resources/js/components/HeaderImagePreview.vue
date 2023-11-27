@@ -42,7 +42,7 @@ export default {
         return {
             existingImage: this.user ? this.user.header_image : null,
             imagePreview: null,
-            deleteImageFlag: false,
+            deleteHeaderImageFlag: false,
         };
     },
     methods: {

@@ -1,5 +1,7 @@
 # チャレンジャーが集うポジティブSNS『チャレコ』
 
+<img alt="top" src="https://github.com/yamamoto117/chalreco/assets/99392507/c8ede646-e602-4670-b42e-ca7898e4ba11">
+
 ## 1.アプリ概要
 ### (1)開発目的
 * チャレンジは人生を豊かにする
@@ -21,18 +23,29 @@
 ### (4)URL
 https://chalreco.net/
 
-## 2.画面
-### (1)ホーム
-<img width="1440" alt="home" src="https://github.com/yamamoto117/chalreco/assets/99392507/04ae0d7f-d5cb-4846-b962-b1a98bf8db53">
+## 2.主な機能
 
-### (2)検索
-<img width="1440" alt="search" src="https://github.com/yamamoto117/chalreco/assets/99392507/8299000a-a297-42dc-9c8a-e48eec84887f">
+<table>
+	<tr>
+		<th style="text-align: center">チャレンジ投稿</th>
+		<th style="text-align: center">チャレンジ閲覧(検索)</th>
+	</tr>
+	<tr>
+		<td><img alt="post" src="https://github.com/yamamoto117/chalreco/assets/99392507/deabb995-5771-42ea-a48f-4e96cc971625"></td>
+		<td><img alt="view" src="https://github.com/yamamoto117/chalreco/assets/99392507/e73736ce-c220-49ba-a54f-f3ab28252dfe"></td>
+  </tr>
+</table>
 
-### (3)マイページ
-<img width="1440" alt="user" src="https://github.com/yamamoto117/chalreco/assets/99392507/911d5c4e-8f24-4f84-8f11-4221eab36177">
-
-### (4)投稿ページ
-<img width="1440" alt="post" src="https://github.com/yamamoto117/chalreco/assets/99392507/85e24e54-6c9a-4e6b-be99-79f3d9d2c5b1">
+<table>
+	<tr>
+		<th style="text-align: center">チャレンジ応援</th>
+		<th style="text-align: center">チャレンジ管理</th>
+	</tr>
+	<tr>
+		<td><img alt="good" src="https://github.com/yamamoto117/chalreco/assets/99392507/9398556c-0611-4a21-a561-7301809e01bb"></td>
+		<td><img alt="management" src="https://github.com/yamamoto117/chalreco/assets/99392507/b29a1cb3-bed4-4230-9ed4-e6d3ec909d7c"></td>
+  </tr>
+</table>
 
 ## 3.機能一覧
 ### (1)メイン機能

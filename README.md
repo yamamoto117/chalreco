@@ -1,6 +1,6 @@
 # チャレンジャーが集うポジティブSNS『チャレコ』
 
-<img alt="top" src="https://github.com/yamamoto117/chalreco/assets/99392507/c8ede646-e602-4670-b42e-ca7898e4ba11">
+![chalreco](https://github.com/yamamoto117/chalreco/assets/99392507/31a7bafe-3c1c-490e-93cf-f344b83c189e)
 
 ## 1.アプリ概要
 ### (1)開発目的

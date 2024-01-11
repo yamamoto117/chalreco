@@ -81,7 +81,7 @@ https://chalreco.net/
 
 ### (3)インフラ
 * Docker 20.10.21 / docker-compose 2.13.0 (開発環境)
-* AWS (EC2/ALB/ACM/S3//RDS/Route53/VPC/EIP/IAM/CloudWatch)
+* AWS (EC2/ALB/ACM/S3/RDS/Route53/VPC/EIP/IAM/CloudWatch)
 * nginx 1.22.1
 
 ### (4)その他
